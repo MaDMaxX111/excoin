@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { hot } from 'react-hot-loader';
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { ThemeProvider as MaterialUiThemeProvider } from "@material-ui/styles";
+import { ThemeProvider } from 'styled-components';
+import theme from "./theme";
+import { AppStyledContainer } from './styles/App';
+import Header from './components/Header';
+// import Footer from './components/Footer/Footer'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    return (
+        <>
+            <MaterialUiThemeProvider theme={theme}>
+                <CssBaseline/>
+                <ThemeProvider theme={theme}>
+                    <AppStyledContainer>
+                        <Header/>
+                        <div className={'content'}>Class cont</div>
+                        <div>Class footer</div>
+                        {/*<Footer />*/}
+                    </AppStyledContainer>
+                </ThemeProvider>
+            </MaterialUiThemeProvider>
+        </>
+    );
 }
 
-export default App;
+export default process.env.NODE_ENV === "development" ? hot(module)(App) : App
+
