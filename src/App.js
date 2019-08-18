@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from "./theme";
 import { AppStyledContainer } from './styles/App';
 import Header from './components/Header';
-// import Footer from './components/Footer/Footer'
+import Footer from './components/Footer'
 
 const App = () => {
     return (
@@ -17,8 +17,7 @@ const App = () => {
                     <AppStyledContainer>
                         <Header/>
                         <div className={'content'}>Class cont</div>
-                        <div>Class footer</div>
-                        {/*<Footer />*/}
+                        <Footer />
                     </AppStyledContainer>
                 </ThemeProvider>
             </MaterialUiThemeProvider>
