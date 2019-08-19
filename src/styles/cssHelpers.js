@@ -15,17 +15,20 @@ export const baseLink = css`
   }
 `
 export const footerLink = css`
-  & a {
+  & > a {
     display: block;
     transition: ${props => props.theme.transition.main};
     color: ${props => props.theme.palette.primary.textHover};
     font-weight: 300;
     font-size: 15px;
     cursor: pointer;
-    margin: ${props => props.theme.spacing(4,0)};
+    margin: ${props => props.theme.spacing(0,0,5)};
     &.active, &:hover {
       color: ${props => props.theme.palette.primary.text};
       text-decoration: none;
     }
   }
+  & > a:last-of-type {
+    margin: ${props => props.theme.spacing(0)};
+  } 
 `

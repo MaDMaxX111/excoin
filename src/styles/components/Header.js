@@ -24,7 +24,25 @@ export const StyledLogo = styled.div`
 
 export const StyledNav = styled.nav`
   ${props => props.direction === 'row' ? baseLink : footerLink}
+  ${props => props.direction === 'column' && `height: 100%; display: flex; flex-direction: column;`}
+  & > h3 {
+    margin: ${props => props.theme.spacing(4, 0, 11)};
+    font-size: 19px;
+    font-weight: 700;
+    color: ${props => props.theme.palette.primary.text};
+  }
 `
+//     .About_Us_ {
+//     font-size: 19px;
+//     font-family: "Quicksand Light";
+//     color: rgb(255, 255, 255);
+//     line-height: 2.368;
+//     text-align: right;
+//     position: absolute;
+//     left: 674.812px;
+//     top: 4531.004px;
+//     z-index: 382;
+// }
 
 export const StyledNavigationButtonsContainer = styled.div`
   ${baseLink}
@@ -58,5 +76,6 @@ export const StyledPopper = styled(Popper)`
     position: absolute;
     top: -40px;
     bottom: 0px;
+    cursor: pointer;
   }
 `

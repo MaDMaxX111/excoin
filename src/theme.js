@@ -6,6 +6,7 @@ const palette = {
         main: '#556cd6',
         text: '#fff',
         textHover: '#8E94A6',
+        textHoverBlue: '#1652f0',
     },
     secondary: {
         main: '#19857b',
@@ -57,6 +58,11 @@ const theme = createMuiTheme({
                 boxShadow: 'none',
             }
         },
+        MuiTypography: {
+            h3: {
+                fontFamily: 'Quicksand, sans-serif',
+            }
+        }
     },
 });
 export default theme;
