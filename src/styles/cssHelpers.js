@@ -4,7 +4,7 @@ export const baseLink = css`
   & a {
     transition: ${props => props.theme.transition.main};
     color: ${props => props.theme.palette.primary.text};
-    font-weight: 600;
+    font-weight: 400;
     font-size: 15px;
     cursor: pointer;
     margin-right: ${props => props.theme.spacing(10)}px;

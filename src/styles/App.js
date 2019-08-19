@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const AppStyledContainer = styled.div`
-  min-height: 100vh;
+  min-height: 5017px;
   display: flex;
   flex-direction: column;
   & > .content {

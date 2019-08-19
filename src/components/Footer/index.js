@@ -45,7 +45,7 @@ const Header = () => {
                     <Grid item md={4} lg={3} style={{border: '1px solid red'}}>
                         <Logo img={logoImg} title={'Excoin'}/>
                     </Grid>
-                    <Grid item md={4} lg={2} style={{border: '1px solid red'}}>
+                    <Grid item md={4} lg={2} style={{border: '1px solid red'}} spacing={20}>
                         <NavigationLinks title={'About as'} links={links} direction="column" />
                     </Grid>
                     <Grid item md={4} lg={2} style={{border: '1px solid red'}}>

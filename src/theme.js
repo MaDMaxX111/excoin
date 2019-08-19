@@ -30,6 +30,15 @@ const theme = createMuiTheme({
         main: 'all 0.3s ease, color 0.2s linear',
     },
     spacing: 4,
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 576,
+            md: 768,
+            lg: 1200,
+            xl: 1920,
+        }
+    },
     overrides: {
         MuiCssBaseline: {
             '@global': {

@@ -39,7 +39,7 @@ const links = [
 
 const Header = () => {
     return (
-        <StyledAppBar>
+        <StyledAppBar position={'relative'}>
             <Container style={{border: '1px solid red'}}>
                 <Grid container wrap={'nowrap'}>
                     <Logo img={logoImg} title={'Excoin'}/>
