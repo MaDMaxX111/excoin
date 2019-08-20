@@ -8,9 +8,11 @@ import Logo from '../Header/logo.js';
 import NavigationLinks from '../Header/navigationlinks';
 import { StyledNav } from '../../styles/components/Header';
 import  SocialButtons from './socialbuttons';
+import packageJson from '../../../package.json';
 import {
     StyledFooter,
     StyledMenuItem,
+    StyledCopyRight,
 } from '../../styles/components/Footer'
 
 const links = {
@@ -76,21 +78,21 @@ const links = {
 const Header = () => {
     return (
         <StyledFooter>
-            <Container style={{border: '1px solid red'}}>
+            <Container>
                 <Grid container spacing={8}>
-                    <Grid item md={4} lg={3} style={{border: '1px solid red'}}>
+                    <Grid item md={4} lg={3}>
                         <Logo img={logoImg} title={'Excoin'}/>
                     </Grid>
-                    <Grid item md={4} lg={2} style={{border: '1px solid red'}}>
+                    <Grid item md={4} lg={2}>
                         <NavigationLinks title={'About Us'} links={links['About Us']} direction="column" />
                     </Grid>
-                    <Grid item md={4} lg={2} style={{border: '1px solid red'}}>
+                    <Grid item md={4} lg={2}>
                         <NavigationLinks title={'Learn'} links={links['Learn']} direction="column" />
                     </Grid>
-                    <Grid item md={4} lg={2} style={{border: '1px solid red'}}>
+                    <Grid item md={4} lg={2}>
                         <NavigationLinks title={'Help'} links={links['Help']} direction="column" />
                     </Grid>
-                    <Grid item md={4} lg={3} style={{border: '1px solid red'}}>
+                    <Grid item md={4} lg={3}>
                         <StyledNav direction={'column'}>
                             <Typography variant={'h3'}>{'Contact Us'}</Typography>
                             <StyledMenuItem>{'Email: '}<Link component={'a'} href={'mailto:info.excoin@gmail.com'} >info.excoin@gmail.com</Link></StyledMenuItem>
@@ -100,6 +102,11 @@ const Header = () => {
                     </Grid>
                 </Grid>
             </Container>
+            <StyledCopyRight>
+                <Container>
+                    {`@ ${new Date().getFullYear()} ${packageJson.author.name}. All Right Reserved`}
+                </Container>
+            </StyledCopyRight>
         </StyledFooter>
     )
 }

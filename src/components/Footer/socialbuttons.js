@@ -14,23 +14,28 @@ import { StyledSocialButtonsContainer } from '../../styles/components/Footer';
 const socialLinks = [
     {
         icon: faFacebookF, //fb
-        href: 'https://facebook.com'
+        href: 'https://facebook.com',
+        label: 'Facebook',
     },
     {
         icon: faTwitter, //tw
-        href: 'https://twitter.com/'
+        href: 'https://twitter.com/',
+        label: 'Twitter',
     },
     {
         icon: faTelegramPlane, //telegramm
-        href: 'https://telegram.org'
+        href: 'https://telegram.org',
+        label: 'Telegram',
     },
     {
         icon: faGithub, //github
-        href: 'https://github.com'
+        href: 'https://github.com',
+        label: 'Github',
     },
     {
         icon: faLinkedinIn, //in
-        href: 'https://linkedin.cn'
+        href: 'https://linkedin.cn',
+        label: 'LinkedinIn',
     },
 ]
 
@@ -38,7 +43,7 @@ const SocialButtons = () => {
 
     return (
         <StyledSocialButtonsContainer>
-            {socialLinks.map((link, key) => <Link key={key} href={link.href} target={'_blank'}><FontAwesomeIcon icon={link.icon} /></Link>)}
+            {socialLinks.map((link, key) => <Link key={key} href={link.href} target={'_blank'} ariaLabel={link.label}><FontAwesomeIcon icon={link.icon} /></Link>)}
         </StyledSocialButtonsContainer>
     )
 }

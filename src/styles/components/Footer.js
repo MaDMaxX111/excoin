@@ -3,11 +3,11 @@ import { baseLink } from '../cssHelpers';
 
 
 export const StyledFooter = styled.footer`
-  border: 1px solid red;
   color: ${props => props.theme.palette.primary.text};
   background-color: ${props => props.theme.palette.background.blueFooter};
   min-height: 110px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   padding: ${props => props.theme.spacing(28, 0, 0, 0)};
 `;
@@ -40,4 +40,15 @@ export const StyledSocialButtonsContainer = styled.div`
       text-decoration: none;
     }
   }
+`;
+
+export const StyledCopyRight = styled.div`
+  border-top: 1px solid ${props => props.theme.palette.border.darkblue};
+  margin-top: ${props => props.theme.spacing(28)}px;
+  min-height: 110px;
+  display: flex;
+  align-items: center;
+  color: ${props => props.theme.palette.primary.textHover};
+  font-weight: 400;
+  font-size: 15px;
 `;

@@ -22,6 +22,7 @@ const palette = {
     },
     border: {
       blue: '#2d3674',
+      darkblue: '#313848',
     },
 };
 

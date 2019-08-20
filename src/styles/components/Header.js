@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import AppBar from "@material-ui/core/AppBar";
 import Popper from '@material-ui/core/Popper';
 import { baseLink, footerLink } from '../cssHelpers';
