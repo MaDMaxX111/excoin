@@ -63,6 +63,12 @@ const theme = createMuiTheme({
             h3: {
                 fontFamily: 'Quicksand, sans-serif',
             }
+        },
+        MuiContainer: {
+            root: {
+                'padding-left': '16px',
+                'padding-right': '16px',
+            },
         }
     },
 });

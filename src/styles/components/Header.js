@@ -9,6 +9,9 @@ export const StyledAppBar = styled(AppBar)`
   min-height: 110px;
   display: flex;
   justify-content: center;
+  ${props => props.theme.breakpoints.down('sm')} {
+      display: none!important;
+  }
 `;
 
 export const StyledLogo = styled.div`

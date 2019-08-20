@@ -8,11 +8,13 @@ import Logo from '../Header/logo.js';
 import NavigationLinks from '../Header/navigationlinks';
 import { StyledNav } from '../../styles/components/Header';
 import  SocialButtons from './socialbuttons';
+import  SupportButton from './supportbutton';
 import packageJson from '../../../package.json';
 import {
     StyledFooter,
     StyledMenuItem,
     StyledCopyRight,
+    StyledInformationWrap,
 } from '../../styles/components/Footer'
 
 const links = {
@@ -79,20 +81,20 @@ const Header = () => {
     return (
         <StyledFooter>
             <Container>
-                <Grid container spacing={8}>
-                    <Grid item md={4} lg={3}>
+                <Grid container position={'relative'} spacing={8}>
+                    <Grid item md={4} lg={3} xs={12}>
                         <Logo img={logoImg} title={'Excoin'}/>
                     </Grid>
-                    <Grid item md={4} lg={2}>
+                    <Grid item md={4} lg={2} xs={12}>
                         <NavigationLinks title={'About Us'} links={links['About Us']} direction="column" />
                     </Grid>
-                    <Grid item md={4} lg={2}>
+                    <Grid item md={4} lg={2} xs={12}>
                         <NavigationLinks title={'Learn'} links={links['Learn']} direction="column" />
                     </Grid>
-                    <Grid item md={4} lg={2}>
+                    <Grid item md={4} lg={2} xs={12}>
                         <NavigationLinks title={'Help'} links={links['Help']} direction="column" />
                     </Grid>
-                    <Grid item md={4} lg={3}>
+                    <Grid item md={4} lg={3} xs={12}>
                         <StyledNav direction={'column'}>
                             <Typography variant={'h3'}>{'Contact Us'}</Typography>
                             <StyledMenuItem>{'Email: '}<Link component={'a'} href={'mailto:info.excoin@gmail.com'} >info.excoin@gmail.com</Link></StyledMenuItem>
@@ -100,11 +102,22 @@ const Header = () => {
                             <SocialButtons />
                         </StyledNav>
                     </Grid>
+                    <SupportButton />
                 </Grid>
             </Container>
             <StyledCopyRight>
                 <Container>
-                    {`@ ${new Date().getFullYear()} ${packageJson.author.name}. All Right Reserved`}
+                    <Grid container>
+                        <Grid item xs={12} md={6} container alignItems={'center'}>
+                            {`@ ${new Date().getFullYear()} ${packageJson.author.name}. All Right Reserved`}
+                        </Grid>
+                        <Grid item xs={12} md={6} container justify={'flex-end'}>
+                            <StyledInformationWrap>
+                                <li><span>39151</span> Active Traders</li>
+                                <li><span>4191 BTC</span> 24h Volume</li>
+                            </StyledInformationWrap>
+                        </Grid>
+                    </Grid>
                 </Container>
             </StyledCopyRight>
         </StyledFooter>

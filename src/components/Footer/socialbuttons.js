@@ -43,7 +43,7 @@ const SocialButtons = () => {
 
     return (
         <StyledSocialButtonsContainer>
-            {socialLinks.map((link, key) => <Link key={key} href={link.href} target={'_blank'} ariaLabel={link.label}><FontAwesomeIcon icon={link.icon} /></Link>)}
+            {socialLinks.map((link, key) => <Link key={key} href={link.href} target={'_blank'} aria-label={link.label} rel="noreferrer"><FontAwesomeIcon icon={link.icon} /></Link>)}
         </StyledSocialButtonsContainer>
     )
 }
