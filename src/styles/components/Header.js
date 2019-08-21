@@ -10,7 +10,7 @@ export const StyledAppBar = styled(AppBar)`
   display: flex;
   justify-content: center;
   ${props => props.theme.breakpoints.down('sm')} {
-      display: none!important;
+      min-height: 60px;
   }
 `;
 

@@ -50,17 +50,29 @@ export const StyledCopyRight = styled.div`
   color: ${props => props.theme.palette.primary.textHover};
   font-weight: 400;
   font-size: 15px;
+  
+  ${props => props.theme.breakpoints.down('sm')} {
+    margin-top: ${props => props.theme.spacing(10)}px;
+    font-size: 14px;
+    & .MuiGrid-container {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+  }
 `;
 
 export const StyledInformationWrap = styled.ul`
   list-style: none;
   padding: 0;
-  display: inline;
+  display: flex;
+  justify-content: flex-end;
   & li {
-    display: inline;
-    margin: ${props => props.theme.spacing(0,4,0,0)};    
+    &:not(:first-of-type) {
+      margin: ${props => props.theme.spacing(0, 0, 0, 4)};
+    }
     & > span {
       color: ${props => props.theme.palette.primary.text};
+    }
   }
 `;
 
@@ -91,11 +103,21 @@ export const StyledFooter = styled.footer`
     bottom: 0;
     right: 0;
     transform: translate(50%, 120%);
-    
+
     ${props => props.theme.breakpoints.down('sm')} {
-      position: initial;
+      position: relative;
       margin: 0 auto;
       transform: none;
     }
+
+    ${props => props.theme.breakpoints.down('md')} {
+      position: relative;
+      margin: 0 auto;
+      transform: none;
+    }
+  }
+  
+  ${props => props.theme.breakpoints.down('md')} {
+    padding: ${props => props.theme.spacing(10, 0, 0, 0)};
   }
 `;

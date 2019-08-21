@@ -15,7 +15,7 @@ const App = () => {
                 <CssBaseline/>
                 <ThemeProvider theme={theme}>
                     <AppStyledContainer>
-                        {/*<Header />*/}
+                        <Header />
                         {/*<div className={'content'}>Class cont</div>*/}
                         <Footer />
                     </AppStyledContainer>
