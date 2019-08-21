@@ -35,17 +35,6 @@ export const StyledNav = styled.nav`
     color: ${props => props.theme.palette.primary.text};
   }
 `
-//     .About_Us_ {
-//     font-size: 19px;
-//     font-family: "Quicksand Light";
-//     color: rgb(255, 255, 255);
-//     line-height: 2.368;
-//     text-align: right;
-//     position: absolute;
-//     left: 674.812px;
-//     top: 4531.004px;
-//     z-index: 382;
-// }
 
 export const StyledNavigationButtonsContainer = styled.div`
   ${baseLink}
@@ -82,3 +71,21 @@ export const StyledPopper = styled(Popper)`
     cursor: pointer;
   }
 `
+
+export const StyledMobileMenuWrap = styled.div`
+  height: 100%;
+  padding: ${props => props.theme.spacing(6,0,8,4)};
+  ${StyledNav}, ${StyledNavigationButtonsContainer} {
+    & > a {
+      color: ${props => props.theme.palette.primary.textHover};
+      font-weight: 300;
+      font-size: 16px;
+      cursor: pointer;
+      margin: ${props => props.theme.spacing(2, 6)};
+      &.active, &:hover {
+        font-weight: bold;
+        text-decoration: none;
+      }
+    }
+  }
+`;

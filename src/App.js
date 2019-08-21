@@ -1,10 +1,10 @@
 import React from 'react';
-import { hot } from 'react-hot-loader';
+import {hot} from 'react-hot-loader';
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { ThemeProvider as MaterialUiThemeProvider } from "@material-ui/styles";
-import { ThemeProvider } from 'styled-components';
+import {ThemeProvider as MaterialUiThemeProvider} from "@material-ui/styles";
+import {ThemeProvider} from 'styled-components';
 import theme from "./theme";
-import { AppStyledContainer } from './styles/App';
+import {AppStyledContainer} from './styles/App';
 import Header from './components/Header';
 import Footer from './components/Footer'
 
@@ -15,9 +15,9 @@ const App = () => {
                 <CssBaseline/>
                 <ThemeProvider theme={theme}>
                     <AppStyledContainer>
-                        <Header />
+                        <Header/>
                         {/*<div className={'content'}>Class cont</div>*/}
-                        <Footer />
+                        <Footer/>
                     </AppStyledContainer>
                 </ThemeProvider>
             </MaterialUiThemeProvider>

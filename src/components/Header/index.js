@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Hidden from "@material-ui/core/Hidden";
@@ -9,10 +9,35 @@ import logoImg from '../../images/Logo.png';
 import Logo from './logo.js';
 import NavigationLinks from './navigationlinks.js';
 import NavigationButtons from './navigationbuttons.js';
-
+import { makeStyles } from '@material-ui/core/styles';
 import {
     StyledAppBar,
+    StyledMobileMenuWrap,
 } from '../../styles/components/Header'
+
+const drawerWidth = 240;
+
+const useStyles = makeStyles(theme => ({
+    root: {
+        display: 'flex',
+    },
+    appBar: {
+        zIndex: theme.zIndex.drawer + 1,
+    },
+    drawer: {
+        width: drawerWidth,
+        flexShrink: 0,
+    },
+    drawerPaper: {
+        width: drawerWidth,
+        background: 'black',
+    },
+    content: {
+        flexGrow: 1,
+        padding: theme.spacing(3),
+    },
+    toolbar: theme.mixins.toolbar,
+}));
 
 const links = [
     {
@@ -42,6 +67,9 @@ const links = [
 ];
 
 const Header = () => {
+
+    const [drawerOpen, setDrawerOpen] = useState(true);
+    const classes = useStyles();
     return (
         <StyledAppBar position={'relative'}>
             <Container>
@@ -63,7 +91,7 @@ const Header = () => {
                                 color="inherit"
                                 aria-label="open drawer"
                                 size={'medium'}
-                                // onClick={this.handleDrawerToggle}
+                                onClick={() => setDrawerOpen(!drawerOpen)}
                             >
                                 <Menu fontSize={'large'} />
                             </IconButton>
@@ -72,15 +100,13 @@ const Header = () => {
                             <Drawer
                                 variant="temporary"
                                 anchor={"right"}
-                                // open={this.state.mobileOpen}
-                                // classes={{
-                                //     paper: classes.drawerPaper
-                                // }}
-                                // onClose={this.handleDrawerToggle}
+                                open={drawerOpen}
+                                onClose={() => setDrawerOpen(!drawerOpen)}
                             >
-                                <div>
-                                    {'dddd'}
-                                </div>
+                                <StyledMobileMenuWrap>
+                                    <NavigationLinks links={links} direction={'column'}/>
+                                    <NavigationButtons />
+                                </StyledMobileMenuWrap>
                             </Drawer>
                         </Hidden>
                     </Grid>
