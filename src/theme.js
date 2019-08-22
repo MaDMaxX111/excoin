@@ -7,6 +7,7 @@ const palette = {
         text: '#fff',
         textHover: '#8E94A6',
         textHoverBlue: '#1652f0',
+        textBlack: '#000',
     },
     secondary: {
         main: '#19857b',

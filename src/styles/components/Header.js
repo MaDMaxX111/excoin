@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import AppBar from "@material-ui/core/AppBar";
 import Popper from '@material-ui/core/Popper';
-import { baseLink, footerLink } from '../cssHelpers';
+import { baseLink, footerLink, mobileNav } from '../cssHelpers';
 
 
 export const StyledAppBar = styled(AppBar)`
@@ -9,7 +9,7 @@ export const StyledAppBar = styled(AppBar)`
   min-height: 110px;
   display: flex;
   justify-content: center;
-  ${props => props.theme.breakpoints.down('sm')} {
+  ${props => props.theme.breakpoints.down('md')} {
       min-height: 60px;
   }
 `;
@@ -74,18 +74,33 @@ export const StyledPopper = styled(Popper)`
 
 export const StyledMobileMenuWrap = styled.div`
   height: 100%;
-  padding: ${props => props.theme.spacing(6,0,8,4)};
-  ${StyledNav}, ${StyledNavigationButtonsContainer} {
-    & > a {
-      color: ${props => props.theme.palette.primary.textHover};
-      font-weight: 300;
+  width: ${props => props.theme.spacing(60)}px;
+`;
+
+export const StyledMobileNav = styled.nav`
+  ${mobileNav}
+`;
+
+export const StyledMobileNavigationButtonsContainer = styled.div`
+  ${mobileNav}
+  .MuiPaper-root {
+    box-shadow: none;
+  }
+  .MuiList-root {
+    padding: 0;
+    .MuiButtonBase-root {
+      padding: ${props => props.theme.spacing(2,0,2,12)}
+      min-height: unset;
       font-size: 16px;
-      cursor: pointer;
-      margin: ${props => props.theme.spacing(2, 6)};
-      &.active, &:hover {
-        font-weight: bold;
-        text-decoration: none;
-      }
+      font-family: inherit;
     }
   }
-`;
+  & .language-switcher {
+    & .svg-inline--fa {
+      vertical-align: -0.15em;
+    }
+    & span {
+      margin-left: ${props => props.theme.spacing(2)}px;
+    }
+  }
+`

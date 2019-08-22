@@ -12,6 +12,9 @@ export const baseLink = css`
       color: ${props => props.theme.palette.primary.textHover};
       text-decoration: none;
     }
+    ${props => props.theme.breakpoints.down('md')} {
+      margin-right: ${props => props.theme.spacing(5)}px;
+    }
   }
 `
 export const footerLink = css`
@@ -42,5 +45,21 @@ export const marginLeftMinus4 = css`
 export const marginRightMinus4 = css`
   .mr-4 {
     margin-right: -${props => props.theme.spacing(4)}px;
+  }
+`;
+
+export const mobileNav = css`
+  margin: ${props => props.theme.spacing(8, 0)};
+  width: 100%;
+  font-weight: bold;
+  font-size: 18px;
+  & > a {
+    display: block;
+    padding: ${props => props.theme.spacing(1.5, 2, 1.5, 8)};
+    color: ${props => props.theme.palette.primary.textBlack};
+    &:hover, .active {
+      color: ${props => props.theme.palette.primary.textHoverBlue};
+      text-decoration: none;
+    }
   }
 `;
