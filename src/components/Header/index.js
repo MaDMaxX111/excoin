@@ -17,27 +17,27 @@ import {
 
 const links = [
     {
-        text: 'Exchange',
+        label: 'link.exchange',
         href: '/',
     },
     {
-        text: 'Charts',
+        label: 'link.charts',
         href: '/',
     },
     {
-        text: 'Features',
+        label: 'link.features',
         href: '/',
     },
     {
-        text: 'Support',
+        label: 'link.support',
         href: '/',
     },
     {
-        text: 'News',
+        label: 'link.news',
         href: '/',
     },
     {
-        text: 'More',
+        label: 'link.more',
         href: '/',
     }
 ];
@@ -58,7 +58,7 @@ const Header = () => {
                         alignItems="center"
                     >
                         <Hidden smDown>
-                            <NavigationLinks links={links}/>
+                            <NavigationLinks links={links} />
                             <Hidden mdDown>
                                 <NavigationButtons/>
                             </Hidden>

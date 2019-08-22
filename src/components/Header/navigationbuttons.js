@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import { connect } from "react-redux";
 import Link from '@material-ui/core/Link';
 import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
@@ -13,10 +14,9 @@ import {
     StyledMobileNavigationButtonsContainer,
     StyledPopper,
 } from '../../styles/components/Header';
-import PropTypes from "prop-types";
 
-const NavigationButtons = ({variant = 'desktop'}) => {
-
+export const NavigationButtons = ({ variant = 'desktop', avalableLanguages, currentLanguage }) => {
+debugger
     const [open, setOpen] = useState(false);
 
     const anchorRef = useRef(null);
@@ -86,6 +86,17 @@ const NavigationButtons = ({variant = 'desktop'}) => {
 
 NavigationButtons.propTypes = {
     variant: PropTypes.oneOf(['mobile', 'desktop']),
+    currentLanguage: PropTypes.any,
+    avalableLanguages: PropTypes.any,
 };
 
-export default NavigationButtons;
+function mapStateToProps(state) {
+    const { Language } = state;
+    const { currentLanguage, avalableLanguages} = Language || {}
+    return {
+        currentLanguage,
+        avalableLanguages,
+    }
+}
+
+export default connect(mapStateToProps)(NavigationButtons);

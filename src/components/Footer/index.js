@@ -20,59 +20,59 @@ import {
 const links = {
     'About Us': [
         {
-            text: 'Our Team',
+            label: 'Our Team',
             href: '/',
         },
         {
-            text: 'Our Company',
+            label: 'Our Company',
             href: '/',
         },
         {
-            text: 'Contact Us',
+            label: 'Contact Us',
             href: '/',
         },
         {
-            text: 'Token Listing',
+            label: 'Token Listing',
             href: '/',
         },
         {
-            text: 'Join Us',
+            label: 'Join Us',
             href: '/',
         },
     ],
     'Learn': [
         {
-            text: 'Legal',
+            label: 'Legal',
             href: '/',
         },
         {
-            text: 'Terms of Use',
+            label: 'Terms of Use',
             href: '/',
         },
         {
-            text: 'AML&CFT',
+            label: 'AML&CFT',
             href: '/',
         },
         {
-            text: 'Privacy Policy',
+            label: 'Privacy Policy',
             href: '/',
         },
     ],
     'Help': [
         {
-            text: 'Support',
+            label: 'Support',
             href: '/',
         },
         {
-            text: 'API Support',
+            label: 'API Support',
             href: '/',
         },
         {
-            text: 'Coin/Token Listing',
+            label: 'Coin/Token Listing',
             href: '/',
         },
         {
-            text: 'Partnership',
+            label: 'Partnership',
             href: '/',
         },
     ],
