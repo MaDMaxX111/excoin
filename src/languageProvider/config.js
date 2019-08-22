@@ -1,4 +1,5 @@
 const config = {
+
     defaultLanguage: () => {
         const locale = window.navigator.language;
         const language = config.options.find(lang => lang.locale.indexOf(locale) > -1);

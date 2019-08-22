@@ -15,8 +15,18 @@ import {
     StyledPopper,
 } from '../../styles/components/Header';
 
-export const NavigationButtons = ({ variant = 'desktop', avalableLanguages, currentLanguage }) => {
-debugger
+import languageActions from '../../redux/language/actions';
+
+const {changeLanguage} = languageActions;
+
+export const NavigationButtons = ({
+                                      variant = 'desktop',
+                                      avalableLanguages,
+                                      currentLanguage,
+                                      changeLanguage,
+                                      closeDrawer = null,
+                                  }) => {
+
     const [open, setOpen] = useState(false);
 
     const anchorRef = useRef(null);
@@ -35,48 +45,64 @@ debugger
 
     const Wrap = variant === 'mobile' ? StyledMobileNavigationButtonsContainer : StyledNavigationButtonsContainer
 
+    const languages = avalableLanguages.length > 1 ? avalableLanguages : null;
+    const language = avalableLanguages.find(lang => lang.languageId === currentLanguage)
+
+    const onLanguageChange = ({languageId}) => {
+        changeLanguage({languageId});
+        handleClose();
+        closeDrawer && closeDrawer();
+    }
+
+    const getMenuItemsLang = () => languages.filter(lang => lang.languageId !== language.languageId).map((lang, key) =>
+        <MenuItem key={key} onClick={() => onLanguageChange({languageId: lang.languageId})}>{lang.text}</MenuItem>)
+
     return (
         <Wrap>
+            {language &&
             <Link
                 className={'language-switcher'}
-                onMouseEnter={variant === 'mobile' ? null : handleOpen}
-                onClick={variant === 'mobile' ? handlToggle : null}
+                onMouseEnter={(variant === 'mobile' || !languages) ? null : handleOpen}
+                onClick={(variant === 'desktop' || !languages) ? null : handlToggle}
                 ref={anchorRef}
             >
                 <FontAwesomeIcon icon={faGlobe}/>
-                <span>EN</span>
+                <span>{language.text}</span>
             </Link>
-            {variant === 'mobile' ?
-                <Collapse in={open}>
-                    <Paper>
-                        <MenuList>
-                            <MenuItem>Руский</MenuItem>
-                        </MenuList>
-                    </Paper>
-                </Collapse> :
-                <StyledPopper
-                    onMouseEnter={handleOpen}
-                    onMouseLeave={handleClose}
-                    open={open}
-                    anchorEl={anchorRef.current}
-                    transition
-                    disablePortal
-                >
-                    {({TransitionProps, placement}) => (
-                        <Grow
-                            {...TransitionProps}
-                            style={{
-                                transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom',
-                            }}
-                        >
-                            <Paper>
-                                <MenuList>
-                                    <MenuItem onClick={handleClose}>Руский</MenuItem>
-                                </MenuList>
-                            </Paper>
-                        </Grow>
-                    )}
-                </StyledPopper>
+            }
+            {languages &&
+            (variant === 'mobile' ?
+                    <Collapse in={open}>
+                        <Paper>
+                            <MenuList>
+                                {getMenuItemsLang()}
+                            </MenuList>
+                        </Paper>
+                    </Collapse> :
+                    <StyledPopper
+                        onMouseEnter={handleOpen}
+                        onMouseLeave={handleClose}
+                        open={open}
+                        anchorEl={anchorRef.current}
+                        transition
+                        disablePortal
+                    >
+                        {({TransitionProps, placement}) => (
+                            <Grow
+                                {...TransitionProps}
+                                style={{
+                                    transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom',
+                                }}
+                            >
+                                <Paper>
+                                    <MenuList>
+                                        {getMenuItemsLang()}
+                                    </MenuList>
+                                </Paper>
+                            </Grow>
+                        )}
+                    </StyledPopper>
+            )
             }
             <Link to={'/'}>Login</Link>
             <Link to={'/'}>Sign Up</Link>
@@ -86,17 +112,23 @@ debugger
 
 NavigationButtons.propTypes = {
     variant: PropTypes.oneOf(['mobile', 'desktop']),
-    currentLanguage: PropTypes.any,
-    avalableLanguages: PropTypes.any,
+    currentLanguage: PropTypes.string,
+    avalableLanguages: PropTypes.arrayOf(PropTypes.shape({
+        languageId: PropTypes.string,
+        locale: PropTypes.arrayOf(PropTypes.string),
+        text: PropTypes.string,
+    })),
+    changeLanguage: PropTypes.func,
+    closeDrawer: PropTypes.func,
 };
 
 function mapStateToProps(state) {
-    const { Language } = state;
-    const { currentLanguage, avalableLanguages} = Language || {}
+    const {Language} = state;
+    const {currentLanguage, avalableLanguages} = Language || {}
     return {
         currentLanguage,
         avalableLanguages,
     }
 }
 
-export default connect(mapStateToProps)(NavigationButtons);
+export default connect(mapStateToProps, {changeLanguage})(NavigationButtons);

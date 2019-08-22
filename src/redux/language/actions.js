@@ -1,9 +1,9 @@
 const actions = {
     CHANGE_LANGUAGE: 'CHANGE_LANGUAGE',
-    changeLanguage: language => {
+    changeLanguage: ({ languageId }) => {
         return {
             type: actions.CHANGE_LANGUAGE,
-            language: language
+            languageId,
         }
     }
 }

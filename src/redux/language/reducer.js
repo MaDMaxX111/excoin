@@ -9,10 +9,11 @@ const initState = {
 export default function(state = initState, action) {
 
   switch (action.type) {
+
     case actions.CHANGE_LANGUAGE:
       return {
         ...state,
-        currentLanguage: action.language
+        currentLanguage: action.languageId
       };
 
     default:

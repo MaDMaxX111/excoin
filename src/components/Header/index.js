@@ -82,7 +82,7 @@ const Header = () => {
                                 onClose={() => setDrawerOpen(!drawerOpen)}
                             >
                                 <StyledMobileMenuWrap>
-                                    <NavigationButtons variant={'mobile'}/>
+                                    <NavigationButtons variant={'mobile'} closeDrawer={() => setDrawerOpen(!drawerOpen)}/>
                                     <Hidden mdUp>
                                         <Divider/>
                                         <NavigationLinks links={links} direction={'column'} variant={'mobile'}/>
