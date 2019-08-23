@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import Typography from "@material-ui/core/Typography";
+import {FormattedMessage} from "react-intl";
 import logoImg from '../../images/Logo.png';
 import Logo from '../Header/logo.js';
 import NavigationLinks from '../Header/navigationlinks';
@@ -15,68 +16,10 @@ import {
     StyledMenuItem,
     StyledCopyRight,
     StyledInformationWrap,
-} from '../../styles/components/Footer'
+} from '../../styles/components/Footer';
 
-const links = {
-    'About Us': [
-        {
-            label: 'Our Team',
-            href: '/',
-        },
-        {
-            label: 'Our Company',
-            href: '/',
-        },
-        {
-            label: 'Contact Us',
-            href: '/',
-        },
-        {
-            label: 'Token Listing',
-            href: '/',
-        },
-        {
-            label: 'Join Us',
-            href: '/',
-        },
-    ],
-    'Learn': [
-        {
-            label: 'Legal',
-            href: '/',
-        },
-        {
-            label: 'Terms of Use',
-            href: '/',
-        },
-        {
-            label: 'AML&CFT',
-            href: '/',
-        },
-        {
-            label: 'Privacy Policy',
-            href: '/',
-        },
-    ],
-    'Help': [
-        {
-            label: 'Support',
-            href: '/',
-        },
-        {
-            label: 'API Support',
-            href: '/',
-        },
-        {
-            label: 'Coin/Token Listing',
-            href: '/',
-        },
-        {
-            label: 'Partnership',
-            href: '/',
-        },
-    ],
-}
+import { FooterMenus } from '../../routes/menu';
+import { PHONE_CONTACT, EMAIL_CONTACT } from '../../constants/contact'
 const Header = () => {
     return (
         <StyledFooter>
@@ -85,20 +28,16 @@ const Header = () => {
                     <Grid item md={4} lg={3} xs={12}>
                         <Logo img={logoImg} title={'Excoin'}/>
                     </Grid>
-                    <Grid item md={4} lg={2} xs={12}>
-                        <NavigationLinks title={'About Us'} links={links['About Us']} direction="column" />
-                    </Grid>
-                    <Grid item md={4} lg={2} xs={12}>
-                        <NavigationLinks title={'Learn'} links={links['Learn']} direction="column" />
-                    </Grid>
-                    <Grid item md={4} lg={2} xs={12}>
-                        <NavigationLinks title={'Help'} links={links['Help']} direction="column" />
-                    </Grid>
+                    {FooterMenus.map((menu, key) =>(
+                        <Grid item md={4} lg={2} xs={12} key={key}>
+                            <NavigationLinks title={menu.title} links={menu.links} direction="column" />
+                        </Grid>
+                    ))}
                     <Grid item md={4} lg={3} xs={12}>
                         <StyledNav direction={'column'}>
-                            <Typography variant={'h3'}>{'Contact Us'}</Typography>
-                            <StyledMenuItem>{'Email: '}<Link component={'a'} href={'mailto:info.excoin@gmail.com'} >info.excoin@gmail.com</Link></StyledMenuItem>
-                            <StyledMenuItem>{'Phone: '}<Link component={'a'} href={'tel:+99 5589 54789'} >+99 5589 54789</Link></StyledMenuItem>
+                            <Typography variant={'h3'}><FormattedMessage id={'title.contactUs'}/></Typography>
+                            <StyledMenuItem><FormattedMessage id={'text.email'}/>{': '}<Link component={'a'} href={`mailto:${EMAIL_CONTACT}`} >{EMAIL_CONTACT}</Link></StyledMenuItem>
+                            <StyledMenuItem><FormattedMessage id={'text.phone'}/>{': '}<Link component={'a'} href={`tel:${PHONE_CONTACT}`} >{PHONE_CONTACT}</Link></StyledMenuItem>
                             <SocialButtons />
                         </StyledNav>
                     </Grid>
@@ -109,7 +48,7 @@ const Header = () => {
                 <Container>
                     <Grid container>
                         <Grid item xs={12} md={6} container alignItems={'center'}>
-                            {`@ ${new Date().getFullYear()} ${packageJson.author.name}. All Right Reserved`}
+                            {`@ ${new Date().getFullYear()} ${packageJson.author.name}.`} <FormattedMessage id={'text.copyRight'}/>
                         </Grid>
                         <Grid item xs={12} md={6} container justify={'flex-end'}>
                             <StyledInformationWrap>

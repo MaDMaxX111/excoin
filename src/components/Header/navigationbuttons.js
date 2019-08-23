@@ -9,6 +9,8 @@ import MenuList from '@material-ui/core/MenuList';
 import Collapse from '@material-ui/core/Collapse';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { FormattedMessage } from 'react-intl';
+
 import {
     StyledNavigationButtonsContainer,
     StyledMobileNavigationButtonsContainer,
@@ -24,7 +26,6 @@ export const NavigationButtons = ({
                                       avalableLanguages,
                                       currentLanguage,
                                       changeLanguage,
-                                      closeDrawer = null,
                                   }) => {
 
     const [open, setOpen] = useState(false);
@@ -51,11 +52,10 @@ export const NavigationButtons = ({
     const onLanguageChange = ({languageId}) => {
         changeLanguage({languageId});
         handleClose();
-        closeDrawer && closeDrawer();
     }
 
     const getMenuItemsLang = () => languages.filter(lang => lang.languageId !== language.languageId).map((lang, key) =>
-        <MenuItem key={key} onClick={() => onLanguageChange({languageId: lang.languageId})}>{lang.text}</MenuItem>)
+        <MenuItem key={key} disableRipple onClick={() => onLanguageChange({languageId: lang.languageId})}>{lang.text}</MenuItem>)
 
     return (
         <Wrap>
@@ -104,8 +104,8 @@ export const NavigationButtons = ({
                     </StyledPopper>
             )
             }
-            <Link to={'/'}>Login</Link>
-            <Link to={'/'}>Sign Up</Link>
+            <Link to={'/'}><FormattedMessage id={'text.login'} /></Link>
+            <Link to={'/'}><FormattedMessage id={'text.signUp'} /></Link>
         </Wrap>
     )
 }
@@ -119,7 +119,6 @@ NavigationButtons.propTypes = {
         text: PropTypes.string,
     })),
     changeLanguage: PropTypes.func,
-    closeDrawer: PropTypes.func,
 };
 
 function mapStateToProps(state) {

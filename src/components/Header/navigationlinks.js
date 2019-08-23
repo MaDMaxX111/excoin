@@ -9,7 +9,7 @@ const NavigationLinks = ({ title = null, links, direction = 'row', variant = 'de
     const Wrap = variant === 'mobile' ? StyledMobileNav : StyledNav
     return (
         <Wrap direction={direction}>
-            {title && <Typography variant={'h3'}>{title}</Typography>}
+            {title && <Typography variant={'h3'}><FormattedMessage id={title}/></Typography>}
             {links.map((link, index) => <Link key={index} to={link['href']}><FormattedMessage id={link['label']}/></Link>)}
         </Wrap>
     )

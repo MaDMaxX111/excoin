@@ -70,6 +70,13 @@ const theme = createMuiTheme({
                 'padding-left': '16px',
                 'padding-right': '16px',
             },
+        },
+        MuiListItem: {
+            button: {
+                '&:hover': {
+                    backgroundColor: 'inherit',
+                }
+            }
         }
     },
 });

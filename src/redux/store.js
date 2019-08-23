@@ -9,7 +9,13 @@ const history = typeof window === 'object' ? createBrowserHistory({basename: pro
 const routeMiddleware = typeof window === 'object' ? routerMiddleware(history) : {}
 
 const sagaMiddleware = createSagaMiddleware();
+
 const middlewares = typeof window === 'object' ? [sagaMiddleware, routeMiddleware] : [sagaMiddleware];
+
+if (process.env.REACT_APP_ENABLE_REDUX_LOGGER) {
+    const logger = require('../middlewares/logger').default;
+    middlewares.push(logger);
+}
 
 const composeEnhancers =
     typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__

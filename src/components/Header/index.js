@@ -14,33 +14,7 @@ import {
     StyledAppBar,
     StyledMobileMenuWrap,
 } from '../../styles/components/Header'
-
-const links = [
-    {
-        label: 'link.exchange',
-        href: '/',
-    },
-    {
-        label: 'link.charts',
-        href: '/',
-    },
-    {
-        label: 'link.features',
-        href: '/',
-    },
-    {
-        label: 'link.support',
-        href: '/',
-    },
-    {
-        label: 'link.news',
-        href: '/',
-    },
-    {
-        label: 'link.more',
-        href: '/',
-    }
-];
+import { MainMenu } from '../../routes/menu'
 
 const Header = () => {
 
@@ -58,7 +32,7 @@ const Header = () => {
                         alignItems="center"
                     >
                         <Hidden smDown>
-                            <NavigationLinks links={links} />
+                            <NavigationLinks links={MainMenu} />
                             <Hidden mdDown>
                                 <NavigationButtons/>
                             </Hidden>
@@ -82,10 +56,10 @@ const Header = () => {
                                 onClose={() => setDrawerOpen(!drawerOpen)}
                             >
                                 <StyledMobileMenuWrap>
-                                    <NavigationButtons variant={'mobile'} closeDrawer={() => setDrawerOpen(!drawerOpen)}/>
+                                    <NavigationButtons variant={'mobile'} />
                                     <Hidden mdUp>
                                         <Divider/>
-                                        <NavigationLinks links={links} direction={'column'} variant={'mobile'}/>
+                                        <NavigationLinks links={MainMenu} direction={'column'} variant={'mobile'}/>
                                     </Hidden>
                                 </StyledMobileMenuWrap>
                             </Drawer>
