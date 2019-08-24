@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.js": "/excoin/static/js/main.4f105612.chunk.js",
+    "main.js.map": "/excoin/static/js/main.4f105612.chunk.js.map",
+    "runtime~main.js": "/excoin/static/js/runtime~main.e410e7a8.js",
+    "runtime~main.js.map": "/excoin/static/js/runtime~main.e410e7a8.js.map",
+    "static/js/2.8b65e0f4.chunk.js": "/excoin/static/js/2.8b65e0f4.chunk.js",
+    "static/js/2.8b65e0f4.chunk.js.map": "/excoin/static/js/2.8b65e0f4.chunk.js.map",
+    "index.html": "/excoin/index.html",
+    "precache-manifest.2a97c887a076fe1a2aa9a848c49be9dd.js": "/excoin/precache-manifest.2a97c887a076fe1a2aa9a848c49be9dd.js",
+    "service-worker.js": "/excoin/service-worker.js",
+    "static/media/support.svg": "/excoin/static/media/support.59ff7ce2.svg"
+  }
+}
