@@ -6,6 +6,7 @@
     "name": "Maxim Efimov",
     "email": "maddmaxx2000@mail.ru"
   },
+  "homepage": "https://madmaxx111.github.io/excoin/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.21",
     "@fortawesome/free-brands-svg-icons": "^5.10.1",
@@ -15,6 +16,7 @@
     "@material-ui/icons": "^4.2.1",
     "connected-react-router": "^6.5.2",
     "history": "^4.9.0",
+    "lodash": "^4.17.15",
     "react": "^16.9.0",
     "react-app-rewire-hot-loader": "^2.0.1",
     "react-app-rewired": "^2.1.3",

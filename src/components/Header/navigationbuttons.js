@@ -122,6 +122,7 @@ NavigationButtons.propTypes = {
 };
 
 function mapStateToProps(state) {
+    // debugger;
     const {Language} = state;
     const {currentLanguage, avalableLanguages} = Language || {}
     return {
