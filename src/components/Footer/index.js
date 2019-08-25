@@ -18,6 +18,8 @@ import {
     StyledInformationWrap,
 } from '../../styles/components/Footer';
 
+import Randomizeincrement from './randomizeincrement.js';
+
 import { FooterMenus } from '../../routes/menu';
 import { PHONE_CONTACT, EMAIL_CONTACT } from '../../constants/contact'
 const Header = () => {
@@ -52,8 +54,22 @@ const Header = () => {
                         </Grid>
                         <Grid item xs={12} md={6} container justify={'flex-end'}>
                             <StyledInformationWrap>
-                                <li><span>39151</span> Active Traders</li>
-                                <li><span>4191 BTC</span> 24h Volume</li>
+                                <li>
+                                    <FormattedMessage
+                                        id={'text.activeTraders'}
+                                        values={{
+                                            counter: <Randomizeincrement initialValue={parseInt(39151)} />
+                                        }}
+                                    />
+                                </li>
+                                <li>
+                                    <FormattedMessage
+                                        id={'text.btcVolume'}
+                                        values={{
+                                            counter: <Randomizeincrement initialValue={parseInt(4191)} />
+                                        }}
+                                    />
+                                </li>
                             </StyledInformationWrap>
                         </Grid>
                     </Grid>

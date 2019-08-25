@@ -17,7 +17,7 @@ const palette = {
     },
     background: {
         default: '#fff',
-        main: '#1a2062',
+        main: '#1B1E63',
         blue: '#2d3674',
         blueFooter: '#1f2738',
     },
@@ -61,8 +61,21 @@ const theme = createMuiTheme({
             }
         },
         MuiTypography: {
+            h2: {
+                fontFamily: 'Quicksand, sans-serif',
+                fontSize: '50px',
+                color: palette.primary.text,
+                fontWeight: 700,
+                letterSpacing: 1.3,
+            },
             h3: {
                 fontFamily: 'Quicksand, sans-serif',
+            },
+            body1: {
+                fontFamily: 'Quicksand, sans-serif',
+                color: palette.primary.text,
+                fontSize: '17px',
+                lineHeight: 1.6,
             }
         },
         MuiContainer: {
@@ -77,7 +90,18 @@ const theme = createMuiTheme({
                     backgroundColor: 'inherit',
                 }
             }
-        }
+        },
+        // MuiFormControl: {
+        //     root: {
+        //         borderRadius: '5px',
+        //         backgroundColor: palette.background.default,
+        //         color: palette.primary.textBlack,
+        //         minHeight: '56px',
+        //         '.MuiInputBase-root': {
+        //             display: 'none',
+        //         }
+        //     },
+        // }
     },
 });
 export default theme;

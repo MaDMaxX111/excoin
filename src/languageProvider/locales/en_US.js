@@ -26,4 +26,9 @@ export default {
   "text.phone": "Phone",
   "text.login": "Login",
   "text.signUp": "Sign Up",
+  "text.activeTraders": "{counter} Active Traders",
+  "text.btcVolume": "{counter} BTC 24h Volume",
+  "banner.buyAndSellCryptocurrency": "Buy and Sell Cryptocurrency",
+  "banner.text": "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text",
+  "form.yourEmailAddress": "Your Email address",
 };

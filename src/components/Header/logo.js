@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import { StyledLogo } from '../../styles/components/Header'
+import { StyledLogo } from '../../styles/components/Header';
 
 const Logo = ({img, title}) => {
     return (

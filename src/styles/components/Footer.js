@@ -66,6 +66,7 @@ export const StyledInformationWrap = styled.ul`
   padding: 0;
   display: flex;
   justify-content: flex-end;
+  white-space: nowrap;
   & li {
     &:not(:first-of-type) {
       margin: ${props => props.theme.spacing(0, 0, 0, 4)};
@@ -120,4 +121,23 @@ export const StyledFooter = styled.footer`
   ${props => props.theme.breakpoints.down('md')} {
     padding: ${props => props.theme.spacing(10, 0, 0, 0)};
   }
+`;
+
+export const StyledWrapIncrement = styled.span`
+    @keyframes flash {
+      0% { 
+        opacity: .3;
+      }
+      100% { 
+        opacity: 1;
+      }
+    }
+        
+    .item-enter {
+      animation: flash 0.9s linear;
+    }
+    
+    .item-exit {
+      display: none;
+    }
 `;

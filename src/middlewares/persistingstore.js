@@ -66,7 +66,24 @@ const createPersistingStore = ({ storeKey = 'key', storePath = null }) => {
 export default createPersistingStore;
 
 export const loadState = (state) => {
+
+    const restoreState = (currentState, savedState) => {
+        return Object.keys(savedState).reduce((result, currentKey) => {
+
+            if (!_.isEqual(result[currentKey], savedState[currentKey])) {
+               if (typeof savedState[currentKey] === 'object') {
+                   return Object.assign({}, result, {[currentKey]: restoreState(result[currentKey], savedState[currentKey])});
+               } else {
+                   return Object.assign({}, result, {[currentKey]: savedState[currentKey]});
+               }
+            }
+
+            return result;
+        }, currentState);
+    }
+
     let { storeKey }  = config;
     const savedPath = loadFromLocalStore(storeKey);
-    return {...state};
+
+    return restoreState(state, savedPath);
 }

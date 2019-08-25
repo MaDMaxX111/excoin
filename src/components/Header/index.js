@@ -7,7 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/icons/Menu";
 import Divider from '@material-ui/core/Divider';
 import logoImg from '../../images/Logo.png';
-import Logo from './logo.js';
+import Logo from './logo';
 import NavigationLinks from './navigationlinks.js';
 import NavigationButtons from './navigationbuttons.js';
 import {

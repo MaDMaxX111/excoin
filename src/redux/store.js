@@ -5,7 +5,6 @@ import createSagaMiddleware from 'redux-saga';
 import reducers from '../redux/reducers';
 import createPersistingStore, { loadState } from '../middlewares/persistingstore';
 import persistingConfig from './persistingConfig';
-// import rootSaga from '../redux/sagas';
 
 const history = typeof window === 'object' ? createBrowserHistory({basename: process.env.PUBLIC_URL || ''}) : {}
 const routeMiddleware = typeof window === 'object' ? routerMiddleware(history) : {}
@@ -28,21 +27,25 @@ const composeEnhancers =
         })
         : compose;
 
+
+// для того чтобы получить инитстеййт стора и потом отчасти заменить его на то что находится в localStore
+const initState = Object.keys(reducers).reduce((res, key) => {
+    const init = reducers[key](undefined, {type: 'init'});
+    return Object.assign({}, res, {[key]: init});
+}, {});
+
 const store = typeof window === 'object' ? createStore(
     combineReducers({
         ...reducers,
         router: connectRouter(history),
     }),
+    loadState(initState),
     composeEnhancers(applyMiddleware(...middlewares)))
     : createStore(
         combineReducers({
             ...reducers
         }),
         composeEnhancers(applyMiddleware(...middlewares)));
-
-// store.replaceReducer((state) => {
-//     return loadState(state);
-// });
 
 // sagaMiddleware.run(rootSaga);
 export { store, history };

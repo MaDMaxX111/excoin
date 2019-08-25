@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { IntlProvider } from "react-intl";
-// import languageConfig from "./languageProvider/config";
 import AppLocale from "./languageProvider";
-import { AppStyledContainer } from "./styles/App";
+import { AppStyledContainer, ContentWrap } from "./styles/App";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import MainBanner from "./components/MainBanner";
 
 export const MainContainer = ({ currentLanguage }) => {
 
@@ -16,7 +16,9 @@ export const MainContainer = ({ currentLanguage }) => {
         <IntlProvider locale={currentLanguage} messages={currentAppLocale.messages}>
             <AppStyledContainer>
                 <Header/>
-                {/*<div className={'content'}>Class cont</div>*/}
+                <ContentWrap>
+                    <MainBanner />
+                </ContentWrap>
                 <Footer/>
             </AppStyledContainer>
         </IntlProvider>

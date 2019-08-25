@@ -26,4 +26,6 @@ export default {
     "text.phone": "Телефон",
     "text.login": "Войти",
     "text.signUp": "Регистрация",
+    "text.activeTraders": "{counter} Активных Трейдеров",
+    "text.btcVolume": "{counter} BTC оборот за последние 24 часа",
 };
