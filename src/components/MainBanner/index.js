@@ -13,7 +13,7 @@ const MainBanner = () => {
 
     return (
         <StaledWrapMainBanner backgroundImage={background}>
-            <Container style={{border: '1px solid red', height: '100%'}}>
+            <Container style={{border: '1px solid red', height: '300%'}}>
                 <Grid
                     container
                     direction="row"

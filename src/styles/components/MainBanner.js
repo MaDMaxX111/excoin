@@ -6,7 +6,7 @@ export const StaledWrapMainBanner = styled.div`
   background-size: 100%;
   background-color: ${props => props.theme.palette.background.main};
   background-image: url("${props => props.backgroundImage}");
-  height: 400px;
+  height: 4000px;
   padding: ${props => props.theme.spacing(49,0,0,0)};
   & h2{
     margin-bottom: ${props => props.theme.spacing(7)}px;

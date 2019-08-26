@@ -31,4 +31,5 @@ export default {
   "banner.buyAndSellCryptocurrency": "Buy and Sell Cryptocurrency",
   "banner.text": "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text",
   "form.yourEmailAddress": "Your Email address",
+  "form.getStartNow": "Get Start Now",
 };
