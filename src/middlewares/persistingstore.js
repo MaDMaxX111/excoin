@@ -68,7 +68,7 @@ export default createPersistingStore;
 export const loadState = (state) => {
 
     const restoreState = (currentState, savedState) => {
-        return Object.keys(savedState).reduce((result, currentKey) => {
+        return savedState ? Object.keys(savedState).reduce((result, currentKey) => {
 
             if (!_.isEqual(result[currentKey], savedState[currentKey])) {
                if (typeof savedState[currentKey] === 'object') {
@@ -79,7 +79,7 @@ export const loadState = (state) => {
             }
 
             return result;
-        }, currentState);
+        }, currentState) : currentState;
     }
 
     let { storeKey }  = config;
