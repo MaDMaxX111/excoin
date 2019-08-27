@@ -5,7 +5,11 @@ import Input from '@material-ui/core/Input';
 // import { createForm, formShape } from 'rc-form';
 import { FormattedMessage } from "react-intl";
 import Button from '@material-ui/core/Button';
-import { Formik } from 'formik';
+import {
+    StaledWrapForm,
+} from '../../styles/components/MainBanner';
+
+
 
 // import { fade, withStyles, makeStyles, createMuiTheme } from '@material-ui/core/styles';
 // const CssTextField = withStyles({
@@ -86,11 +90,12 @@ import { Formik } from 'formik';
 //     return <input value={props.value || 'ddddd'} onChange={props.onChange} />
 // }
 
-const Basic = () => (
-    <div>
-        <h1>Anywhere in your app!</h1>
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+//
+const SubscribeFrorm = () => (
+    <StaledWrapForm>
         <Formik
-            initialValues={{ email: '', password: '' }}
+            initialValues={{ email: ''}}
             validate={values => {
                 let errors = {};
                 if (!values.email) {
@@ -109,40 +114,35 @@ const Basic = () => (
                 }, 400);
             }}
         >
-            {({
-                  values,
+            {({   values,
                   errors,
                   touched,
                   handleChange,
                   handleBlur,
                   handleSubmit,
                   isSubmitting,
-                  /* and other goodies */
+                  isValid,
               }) => (
-                <form onSubmit={handleSubmit}>
-                    <input
+                <Form autoComplete="off">
+                    <TextField
                         type="email"
                         name="email"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
                         value={values.email}
-                    />
-                    {errors.email && touched.email && errors.email}
-                    <input
-                        type="password"
-                        name="password"
+                        helperText={(errors.email && touched.email) ? errors.email : null}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        value={values.password}
                     />
-                    {errors.password && touched.password && errors.password}
-                    <button type="submit" disabled={isSubmitting}>
-                        Submit
-                    </button>
-                </form>
+                    <Button
+                        onClick={handleSubmit}
+                        type={'submit'}
+                        disabled={isSubmitting || !isValid}
+                    >
+                        <FormattedMessage id={'form.getStartNow'}/>
+                    </Button>
+                </Form>
             )}
         </Formik>
-    </div>
+    </StaledWrapForm>
 );
 
-export default Basic;
+export default SubscribeFrorm;

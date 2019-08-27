@@ -17,3 +17,7 @@ export const StaledWrapMainBanner = styled.div`
     margin-bottom: ${props => props.theme.spacing(7)}px;
   }
 `;
+
+export const StaledWrapForm = styled.div`
+  background: white;
+`;
