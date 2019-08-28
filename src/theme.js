@@ -27,6 +27,12 @@ const palette = {
       blue: '#2d3674',
       darkblue: '#313848',
     },
+    common: {
+        green: '#00c162',
+        red: '#dc0000',
+        greenTransparent: 'rgb(0, 193, 98, 0.102)',
+        redTransparent: 'rgb(220, 0, 0, 0.102)',
+    }
 };
 
 const theme = createMuiTheme({

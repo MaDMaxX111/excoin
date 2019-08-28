@@ -5,10 +5,12 @@ import Typography from "@material-ui/core/Typography";
 import { FormattedMessage } from "react-intl";
 import {
     StaledWrapMainBanner,
+    StaledWrapCharts,
 } from '../../styles/components/MainBanner';
 import background from '../../images/waves.svg';
 import SubscribeFrorm from './subscribeform';
 import Chart from './chart';
+import News from './news';
 
 const MainBanner = () => {
 
@@ -28,13 +30,16 @@ const MainBanner = () => {
                     <Typography variant={'body1'}><FormattedMessage id={'banner.text'}/></Typography>
                     <SubscribeFrorm />
                 </Grid>
-                <Grid container justify="center" spacing={spacing}>
+                <StaledWrapCharts>
+                <Grid container justify="center" spacing={8}>
                     {[0, 1, 2, 3].map(value => (
                         <Grid key={value} item lg={3}>
                             <Chart />
                         </Grid>
                     ))}
                 </Grid>
+                </StaledWrapCharts>
+                <News />
             </Container>
         </StaledWrapMainBanner>
     )

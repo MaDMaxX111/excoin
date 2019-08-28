@@ -40,7 +40,7 @@ const SubscribeFrorm = () => (
                 <Form autoComplete="off">
                     <TextField
                         InputLabelProps={{
-                            for: idMailField,
+                            htmlFor: idMailField,
                         }}
                         id={idMailField}
                         label={<FormattedMessage id={'form.yourEmailAddress'} />}

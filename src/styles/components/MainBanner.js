@@ -22,6 +22,7 @@ export const StaledWrapMainBanner = styled.div`
 export const StaledWrapForm = styled.div`
   flex: 1;
   padding: ${props => props.theme.spacing(0,75)};
+  margin-bottom: ${props => props.theme.spacing(26)}px;
   form {
     display: flex;
     .MuiTextField-root {
@@ -52,16 +53,45 @@ export const StyledButton = styled(Button)`
   border: 1px solid red;!important;
 `;
 
+export const StaledWrapCharts = styled.div``;
 export const StaledWrapChart = styled.div`
   border-radius: ${props => props.theme.spacing(1)}px;
   background-color: ${props => props.theme.palette.background.defaultTransparent};
   display: flex;
   flex-direction: row;
+  padding: ${props => props.theme.spacing(5,3,5,3.5)};
+  color: ${props => props.theme.palette.primary.text};
   & .caption {
+    font-weight: bold;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    & .title {
+      font-size: 14px;
+      letter-spacing: 1px;
+      margin-bottom: ${props => props.theme.spacing(7)}px;
+    }
+    & .valuerate {
+      width: 100%;
+      font-size: 14px;
+      letter-spacing: 1px;
+      margin-bottom: ${props => props.theme.spacing(2)}px;
+      line-height: 1;
+      & .value {
+        color: ${props => props.low ? props.theme.palette.common.red : props.theme.palette.common.green};
+        margin-right: ${props => props.theme.spacing(2)}px;     
+      }
+      & .rate {
+        font-size: 12px; 
+      }
+    }
+    & .volume {
+      font-size: 12px;
+    }
   }
-  
-  border: 1px solid red;
-
-
-  height: 300px;
+  & .chart {
+    flex: 1;
+    //border: 1px solid green;
+  }
 `;
