@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import { FormattedMessage } from "react-intl";
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import nanoid from 'nanoid';
 import {
     StaledWrapForm, StyledButton
 } from '../../styles/components/MainBanner';
@@ -33,9 +34,15 @@ const SubscribeFrorm = () => (
                   handleSubmit,
                   isSubmitting,
                   isValid,
-              }) => (
+              }) => {
+                const idMailField = nanoid();
+                return(
                 <Form autoComplete="off">
                     <TextField
+                        InputLabelProps={{
+                            for: idMailField,
+                        }}
+                        id={idMailField}
                         label={<FormattedMessage id={'form.yourEmailAddress'} />}
                         type="email"
                         name="email"
@@ -53,7 +60,7 @@ const SubscribeFrorm = () => (
                         <FormattedMessage id={'form.getStartNow'}/>
                     </StyledButton>
                 </Form>
-            )}
+            )}}
         </Formik>
     </StaledWrapForm>
 );

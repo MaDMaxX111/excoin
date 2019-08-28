@@ -19,6 +19,7 @@
     "gh-pages": "^2.1.1",
     "history": "^4.9.0",
     "lodash": "^4.17.15",
+    "nanoid": "^2.0.4",
     "react": "^16.9.0",
     "react-app-rewire-hot-loader": "^2.0.1",
     "react-app-rewired": "^2.1.3",

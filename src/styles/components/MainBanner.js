@@ -55,7 +55,11 @@ export const StyledButton = styled(Button)`
 export const StaledWrapChart = styled.div`
   border-radius: ${props => props.theme.spacing(1)}px;
   background-color: ${props => props.theme.palette.background.defaultTransparent};
-
+  display: flex;
+  flex-direction: row;
+  & .caption {
+  }
+  
   border: 1px solid red;
 
 

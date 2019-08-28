@@ -7,18 +7,16 @@ import {
     StaledWrapChart
 } from '../../styles/components/MainBanner';
 
-
-// const SubscribeSchema = Yup.object().shape({
-//     email: Yup.string()
-//         .email(<FormattedMessage id={'error.email'}/>)
-//         .required(<FormattedMessage id={'error.emailRequered'}/>),
-// });
-
 const Chart = () => (
     <StaledWrapChart>
-        <span>BNB/BTC</span>
-        <span>0.00017571 $2.31</span>
-        <span>Volume: 4,356.83 BTC</span>
+        <div className={'caption'}>
+            <div className={'title'}>BNB/BTC</div>
+            <div className={'rate'}><span>0.00017571</span> $2.31</div>
+            <div className={'volume'}>Volume: 4,356.83 BTC</div>
+        </div>
+        <div className={'chart'}>
+
+        </div>
     </StaledWrapChart>
 );
 
