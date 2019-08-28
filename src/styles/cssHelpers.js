@@ -25,7 +25,7 @@ export const footerLink = css`
     font-weight: 300;
     font-size: 15px;
     cursor: pointer;
-    margin: ${props => props.theme.spacing(0,0,5)};
+    margin: ${props => props.theme.spacing(0, 0, 5)};
     &.active, &:hover {
       color: ${props => props.theme.palette.primary.text};
       text-decoration: none;
@@ -65,7 +65,62 @@ export const mobileNav = css`
 `;
 
 export const formStyle = css`
-  //.MuiInputLabel-shrink {
-  //  display: none;
-  //}
+  
+  //TextField
+  .MuiTextField-root {
+  
+    background-color: ${props => props.theme.palette.background.default}
+    border-radius: ${props => props.theme.spacing(1)}px;
+    
+    & .MuiInput-underline, &.Mui-focused {
+      &:before {
+        border: none;
+      }
+      &:after {
+        border: none;
+      }
+      &:hover {
+        &:before {
+          border: none;          
+        }
+      }
+    }
+    & label {
+      padding: ${props => props.theme.spacing(0,5)};
+      transform: translate(0, ${props => props.theme.spacing(5)}px) scale(1);
+      + .MuiInput-formControl {
+        margin: 0;
+      }
+    }
+    
+    & label.Mui-focused, & label.MuiFormLabel-filled {
+      color: green;
+      max-height: 0;
+      overflow: hidden;
+    }
+    
+    & .MuiInputBase-input {
+      padding: ${props => props.theme.spacing(4.5,5)};
+    }
+    
+    & .MuiOutlinedInput-root {
+      fieldset {
+        border: none;
+      }
+    }
+    
+    & .MuiFormHelperText-root {
+      position: absolute;
+      top: 100%;
+      padding: 0;
+      margin: ${props => props.theme.spacing(1.5,0)};
+    }
+  }
+`;
+
+export const buttonText = css`
+  color: ${props => props.theme.palette.primary.text};
+  font-size: 15px;
+  text-transform: none;
+  font-weight: 700;
 `;

@@ -13,7 +13,7 @@ const App = () => {
         <Provider store={store}>
             <MaterialUiThemeProvider theme={theme}>
                 <CssBaseline/>
-                <ThemeProvider theme={theme}>
+                <ThemeProvider theme={theme} injectFirst>
                     <MainContainer />
                 </ThemeProvider>
             </MaterialUiThemeProvider>

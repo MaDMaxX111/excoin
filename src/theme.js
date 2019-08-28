@@ -17,9 +17,11 @@ const palette = {
     },
     background: {
         default: '#fff',
+        defaultTransparent: 'rgba(255, 255, 255, 0.078)',
         main: '#1B1E63',
         blue: '#2d3674',
         blueFooter: '#1f2738',
+        lightBlue: '#1652f0',
     },
     border: {
       blue: '#2d3674',
@@ -91,17 +93,11 @@ const theme = createMuiTheme({
                 }
             }
         },
-        // MuiFormControl: {
-        //     root: {
-        //         borderRadius: '5px',
-        //         backgroundColor: palette.background.default,
-        //         color: palette.primary.textBlack,
-        //         minHeight: '56px',
-        //         '.MuiInputBase-root': {
-        //             display: 'none',
-        //         }
-        //     },
-        // }
+        MuiFormHelperText: {
+            root: {
+                fontFamily: 'Quicksand, sans-serif',
+            }
+        }
     },
 });
 export default theme;

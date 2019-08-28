@@ -8,12 +8,16 @@ import {
 } from '../../styles/components/MainBanner';
 import background from '../../images/waves.svg';
 import SubscribeFrorm from './subscribeform';
+import Chart from './chart';
 
 const MainBanner = () => {
 
+
+    const [spacing, setSpacing] = React.useState(2);
+
     return (
         <StaledWrapMainBanner backgroundImage={background}>
-            <Container style={{border: '1px solid red', height: '300%'}}>
+            <Container>
                 <Grid
                     container
                     direction="row"
@@ -23,6 +27,13 @@ const MainBanner = () => {
                     <Typography variant={'h2'}><FormattedMessage id={'banner.buyAndSellCryptocurrency'}/></Typography>
                     <Typography variant={'body1'}><FormattedMessage id={'banner.text'}/></Typography>
                     <SubscribeFrorm />
+                </Grid>
+                <Grid container justify="center" spacing={spacing}>
+                    {[0, 1, 2, 3].map(value => (
+                        <Grid key={value} item lg={3}>
+                            <Chart />
+                        </Grid>
+                    ))}
                 </Grid>
             </Container>
         </StaledWrapMainBanner>

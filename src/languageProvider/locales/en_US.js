@@ -32,4 +32,6 @@ export default {
   "banner.text": "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text",
   "form.yourEmailAddress": "Your Email address",
   "form.getStartNow": "Get Start Now",
+  "error.email": "Invalid email format",
+  "error.emailRequered": "Email required",
 };
