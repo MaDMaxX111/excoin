@@ -12,7 +12,7 @@ const News = () => {
     return (
         <StaledWrapNews>
             <LinkButton to={NEWS_URL}><FormattedMessage id={'link.news'} /></LinkButton>
-            <Typography>
+            <div className="marquee"><span>
                 <Link to={NEWS_URL}>{'ghjfggfffghfghfghfghfghgfhghffgfgfghghfhfgfhggfh'}</Link>
                 <Link to={NEWS_URL}>{'ghjfggfffghfghfghfghfghgfhghffgfgfghghfhfgfhggfh'}</Link>
                 <Link to={NEWS_URL}>{'ghjfggfffghfghfghfghfghgfhghffgfgfghghfhfgfhggfh'}</Link>
@@ -23,7 +23,8 @@ const News = () => {
                 <Link to={NEWS_URL}>{'ghjfggfffghfghfghfghfghgfhghffgfgfghghfhfgfhggfh'}</Link>
                 <Link to={NEWS_URL}>{'ghjfggfffghfghfghfghfghgfhghffgfgfghghfhfgfhggfh'}</Link>
                 <Link to={NEWS_URL}>{'ghjfggfffghfghfghfghfghgfhghffgfgfghghfhfgfhggfh'}</Link>
-            </Typography>
+            </span>
+            </div>
         </StaledWrapNews>
     );
 }
