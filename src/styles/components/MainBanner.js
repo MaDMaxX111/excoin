@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
-import { buttonText } from '../cssHelpers';
+import { buttonText, baseLink } from '../cssHelpers';
 
 export const StaledWrapMainBanner = styled.div`
   background-repeat: no-repeat;
@@ -8,7 +8,7 @@ export const StaledWrapMainBanner = styled.div`
   background-size: 100%;
   background-color: ${props => props.theme.palette.background.main};
   background-image: url("${props => props.backgroundImage}");
-  padding: ${props => props.theme.spacing(49,0,0,0)};
+  padding: ${props => props.theme.spacing(49,0,7,0)};
   & h2{
     margin-bottom: ${props => props.theme.spacing(7)}px;
   }
@@ -53,7 +53,9 @@ export const StyledButton = styled(Button)`
   border: 1px solid red;!important;
 `;
 
-export const StaledWrapCharts = styled.div``;
+export const StaledWrapCharts = styled.div`
+  margin-bottom: ${props => props.theme.spacing(7)}px;
+`;
 export const StaledWrapChart = styled.div`
   border-radius: ${props => props.theme.spacing(1)}px;
   background-color: ${props => props.theme.palette.background.defaultTransparent};
@@ -92,6 +94,19 @@ export const StaledWrapChart = styled.div`
   }
   & .chart {
     flex: 1;
-    //border: 1px solid green;
+  }
+`;
+
+export const StaledWrapNews = styled.div`  
+  display: flex;
+  
+  & .MuiTypography-body1 {
+    margin: 0;
+    padding: 0;
+    overflow-style: marquee-block; 
+marquee-play-count: infinite; 
+marquee-speed: slow;
+marquee-style: scroll;
+marquee-direction: reverse;
   }
 `;
