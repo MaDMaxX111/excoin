@@ -21,11 +21,11 @@ export default {
     "link.apiSupport": "API Поддержка",
     "link.coinTokenListing": "Список Coin/Token",
     "link.partnership": "Партнерство",
+    "link.signUp": "Регистрация",
+    "link.login": "Войти",
     "text.copyRight": "Все права защищены",
     "text.email": "Email",
     "text.phone": "Телефон",
-    "text.login": "Войти",
-    "text.signUp": "Регистрация",
     "text.activeTraders": "{counter} Активных Трейдеров",
     "text.btcVolume": "{counter} BTC оборот за последние 24 часа",
 };

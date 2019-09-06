@@ -17,3 +17,4 @@ export const PRIVACY_POLICY_URL = '/privacyPolicy';
 export const API_SUPPORT_URL = '/apiSupport';
 export const COIN_TOKEN_LISTING_URL = '/coinTokenListing';
 export const PARTNERSHIP_URL = '/partnership';
+export const LOGIN_URL = '/login';

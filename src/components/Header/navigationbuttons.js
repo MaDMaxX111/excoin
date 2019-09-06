@@ -10,6 +10,7 @@ import Collapse from '@material-ui/core/Collapse';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { FormattedMessage } from 'react-intl';
+import {JOIN_US_URL, LOGIN_URL} from "../../constants/route";
 
 import {
     StyledNavigationButtonsContainer,
@@ -104,8 +105,8 @@ export const NavigationButtons = ({
                     </StyledPopper>
             )
             }
-            <Link to={'/'}><FormattedMessage id={'text.login'} /></Link>
-            <Link to={'/'}><FormattedMessage id={'text.signUp'} /></Link>
+            <Link to={LOGIN_URL}><FormattedMessage id={'link.login'} /></Link>
+            <Link to={JOIN_US_URL}><FormattedMessage id={'link.signUp'} /></Link>
         </Wrap>
     )
 }
