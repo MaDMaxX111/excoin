@@ -122,5 +122,5 @@ export const buttonText = css`
   color: ${props => props.theme.palette.primary.text};
   font-size: 15px;
   text-transform: none;
-  font-weight: 700;
+  font-weight: bold;
 `;

@@ -26,16 +26,16 @@ const MainBanner = () => {
                     <Typography variant={'body1'}><FormattedMessage id={'banner.text'}/></Typography>
                     <SubscribeFrorm />
                 </Grid>
-                {/*<StaledWrapCharts>*/}
-                {/*<Grid container justify="center" spacing={8}>*/}
-                {/*    {[0, 1, 2, 3].map(value => (*/}
-                {/*        <Grid key={value} item lg={3}>*/}
-                {/*            <Chart />*/}
-                {/*        </Grid>*/}
-                {/*    ))}*/}
-                {/*</Grid>*/}
-                {/*</StaledWrapCharts>*/}
-                {/*<News />*/}
+                <StaledWrapCharts>
+                    <Grid container justify="center" spacing={8}>
+                        {[0, 1, 2, 3].map(value => (
+                            <Grid key={value} item lg={3} md={6} xs={12}>
+                                <Chart />
+                            </Grid>
+                        ))}
+                    </Grid>
+                </StaledWrapCharts>
+                <News />
             </Container>
         </StaledWrapMainBanner>
     )

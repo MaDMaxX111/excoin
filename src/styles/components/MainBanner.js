@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import {buttonText} from '../cssHelpers';
-
+import { LinkButton } from './Common';
 export const StaledWrapMainBanner = styled.div`
   background-repeat: no-repeat;
   background-position: 0 100%;
@@ -18,6 +18,9 @@ export const StaledWrapMainBanner = styled.div`
     margin-bottom: ${props => props.theme.spacing(15)}px;
   }
   ${props => props.theme.breakpoints.down('md')} {
+    & .MuiContainer-root > .MuiGrid-container {
+      flex-direction: column;
+    }
     text-align: center;
     & h2 {
       font-size: 36px;
@@ -41,14 +44,22 @@ export const StaledWrapForm = styled.div`
     }
   }
   ${props => props.theme.breakpoints.down('md')} {
+    padding: ${props => props.theme.spacing(0, 20)};
+    width: 100%;
+  }
+  ${props => props.theme.breakpoints.down('xs')} {
+    width: 100%;
+    padding: 0;
+    margin-bottom: ${props => props.theme.spacing(10)}px;
     form {
       display: flex;
       flex-direction: column;
       .MuiTextField-root {
-        width: 100%;
+        margin-bottom: ${props => props.theme.spacing(8)}px;
+        border-radius: 4px;
       }
     }
-  } 
+  }
 `;
 
 export const StyledButton = styled(Button)`
@@ -69,6 +80,13 @@ export const StyledButton = styled(Button)`
   }
   display: none;!important;
   border: 1px solid red;!important;
+  ${props => props.theme.breakpoints.down('xs')} {
+    &.MuiButtonBase-root {
+      padding: ${props => props.theme.spacing(3, 5)};
+      align-self: center;
+      border-radius: 4px;
+    }
+  }
 `;
 
 export const StaledWrapCharts = styled.div`
@@ -113,10 +131,17 @@ export const StaledWrapChart = styled.div`
   & .chart {
     flex: 1;
   }
+  ${props => props.theme.breakpoints.down('md')} {
+    text-align: left;
+    & .caption {
+      & .title {
+        margin-bottom: ${props => props.theme.spacing(4)}px;
+      }
+    }
+  }
 `;
 
 export const StaledWrapNews = styled.div`  
-  
   display: flex;
   .marquee {
     display: flex;
@@ -145,10 +170,22 @@ export const StaledWrapNews = styled.div`
        animation-play-state: paused;
     }
   }
- 
 
   @keyframes marquee{
     0%{transform: translateX(0);}
     100%{transform: translateX(-100%)}
+  }
+  
+  ${props => props.theme.breakpoints.down('xs')} {
+    flex-direction: column-reverse;
+    & ${LinkButton} {
+      align-self: center;
+    }
+    .marquee {
+      margin: ${props => props.theme.spacing(0,0,5,0)};
+      & span {
+        animation-duration: ${props => props.animateWidth / 2}s;
+      }
+    }
   }
 `;
