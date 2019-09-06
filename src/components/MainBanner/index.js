@@ -13,10 +13,6 @@ import Chart from './chart';
 import News from './news';
 
 const MainBanner = () => {
-
-
-    const [spacing, setSpacing] = React.useState(2);
-
     return (
         <StaledWrapMainBanner backgroundImage={background}>
             <Container>

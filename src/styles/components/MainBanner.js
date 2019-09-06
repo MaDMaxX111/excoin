@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
-import {buttonText, baseLink} from '../cssHelpers';
+import {buttonText} from '../cssHelpers';
 
 export const StaledWrapMainBanner = styled.div`
   background-repeat: no-repeat;
@@ -8,7 +8,7 @@ export const StaledWrapMainBanner = styled.div`
   background-size: 100%;
   background-color: ${props => props.theme.palette.background.main};
   background-image: url("${props => props.backgroundImage}");
-  padding: ${props => props.theme.spacing(49, 0, 7, 0)};
+  padding: ${props => props.theme.spacing(49, 0, 10, 0)};
   & h2{
     margin-bottom: ${props => props.theme.spacing(7)}px;
   }
@@ -54,7 +54,7 @@ export const StyledButton = styled(Button)`
 `;
 
 export const StaledWrapCharts = styled.div`
-  margin-bottom: ${props => props.theme.spacing(7)}px;
+  margin-bottom: ${props => props.theme.spacing(10)}px;
 `;
 export const StaledWrapChart = styled.div`
   border-radius: ${props => props.theme.spacing(1)}px;
@@ -98,36 +98,39 @@ export const StaledWrapChart = styled.div`
 `;
 
 export const StaledWrapNews = styled.div`  
-  display: flex;
   
-.marquee{
-width:100%;
-white-space:nowrap;
-overflow:hidden;
-}
+  display: flex;
+  .marquee {
+    display: flex;
+    max-width:100%;
+    white-space:nowrap;
+    overflow:hidden;
+    margin: ${props => props.theme.spacing(0,4)};
+    & span {
+        display:inline-flex;
+        align-items: center;
+        animation: marquee ${props => props.animateWidth / 5}s linear infinite;
+        animation-play-state: ${props => props.playAnimate ? 'running' : 'paused'};
+        & a {
+          transition: ${props => props.theme.transition.main};
+          color: ${props => props.theme.palette.primary.text};
+          font-size: 15px;
+          cursor: pointer;
+          margin-right: ${props => props.theme.spacing(15)}px;
+          &.active, &:hover {
+              font-weight: bold;
+              text-decoration: none;
+          } 
+        }
+    }
+    &:hover span{
+       animation-play-state: paused;
+    }
+  }
  
-.marquee span {
-color:#212121;
-font-size:25px;
-display:inline-block;
-padding-left:100%;
-animation: marquee 10s infinite linear;
-&:hover{
-animation-play-state: paused;
-}
-}
-//.marque:hover {
-//  display: none;
-  //color: red;
-  //animation: step-end;
-  //animation-play-state: paused;
-//} 
-@-webkit-keyframes marquee {
-0%{-webkit-transform: translate(0, 0);}
-100%{-webkit-transform: translate(-100%, 0);}
-}
-@keyframes marquee{
-0%{transform: translate(0, 0);}
-100%{transform: translate(-100%, 0)}
-}
+
+  @keyframes marquee{
+    0%{transform: translateX(0);}
+    100%{transform: translateX(-100%)}
+  }
 `;

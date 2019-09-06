@@ -7,6 +7,7 @@ import { AppStyledContainer, ContentWrap } from "./styles/App";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import MainBanner from "./components/MainBanner";
+import CallToActon from "./components/CallToActon";
 
 export const MainContainer = ({ currentLanguage }) => {
 
@@ -18,6 +19,7 @@ export const MainContainer = ({ currentLanguage }) => {
                 <Header/>
                 <ContentWrap>
                     <MainBanner />
+                    <CallToActon />
                 </ContentWrap>
                 <Footer/>
             </AppStyledContainer>

@@ -5,4 +5,5 @@ export {
 
 export {
     useDimensions,
+    useVisibility,
 } from './hooks'
