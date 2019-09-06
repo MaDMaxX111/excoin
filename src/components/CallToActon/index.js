@@ -20,13 +20,13 @@ const CallToActon = () => {
                     container
                     justify="center"
                 >
-                    <Grid key={1} item lg={6}>
+                    <Grid key={1} item lg={6} md={12}>
                         <StaledWrapText>
                             <h2><FormattedMessage id={'banner.gettingStarted'}/></h2>
                             <p><FormattedMessage id={'text.weProvide'} /></p>
                         </StaledWrapText>
                     </Grid>
-                    <Grid key={2} item lg={6}>
+                    <Grid key={2} item lg={6} md={12}>
                         <StyledWrapButton>
                             <LinkButton to={LOGIN_URL}><FormattedMessage id={'link.login'} /></LinkButton>
                             <StyledWrapDelimeter>

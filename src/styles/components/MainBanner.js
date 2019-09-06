@@ -17,6 +17,15 @@ export const StaledWrapMainBanner = styled.div`
     padding: ${props => props.theme.spacing(0, 75)};
     margin-bottom: ${props => props.theme.spacing(15)}px;
   }
+  ${props => props.theme.breakpoints.down('md')} {
+    text-align: center;
+    & h2 {
+      font-size: 36px;
+    }
+    & p {
+      padding: ${props => props.theme.spacing(0, 2)};
+    }
+  }
 `;
 
 export const StaledWrapForm = styled.div`
@@ -29,6 +38,15 @@ export const StaledWrapForm = styled.div`
       flex: 1;
       border-bottom-right-radius: 0;
       border-top-right-radius: 0;
+    }
+  }
+  ${props => props.theme.breakpoints.down('md')} {
+    form {
+      display: flex;
+      flex-direction: column;
+      .MuiTextField-root {
+        width: 100%;
+      }
     }
   } 
 `;

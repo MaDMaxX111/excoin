@@ -8,6 +8,9 @@ export const StaledWrapCallToAction = styled.div`
   background-color: ${props => props.theme.palette.background.lightBlue};
   background-image: url("${props => props.backgroundImage}");
   padding: ${props => props.theme.spacing(22, 0, 24, 0)};
+  ${props => props.theme.breakpoints.down('md')} {
+    background-size: auto;
+  }
 `;
 
 export const StaledWrapText = styled.div`
@@ -25,6 +28,13 @@ export const StaledWrapText = styled.div`
     text-align: left;
     padding: 0;
   }
+  ${props => props.theme.breakpoints.down('md')} {
+    margin-bottom: ${props => props.theme.spacing(5)}px;
+    text-align: center;
+    & > p {
+      text-align: center;
+    }
+  }
 `;
 
 export const StyledWrapButton = styled.div`
@@ -41,6 +51,13 @@ export const StyledWrapButton = styled.div`
       border-color: ${props => props.theme.palette.background.default};
       background-color: ${props => props.theme.palette.background.default};
       color: ${props => props.theme.palette.primary.textHoverBlue};
+    }
+  }
+  
+  ${props => props.theme.breakpoints.down('md')} {
+    justify-content: center;
+    ${LinkButton} {
+      padding: ${props => props.theme.spacing(3, 3)};
     }
   }
 `;
