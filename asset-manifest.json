@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/excoin/static/js/main.e5c4d462.chunk.js",
-    "main.js.map": "/excoin/static/js/main.e5c4d462.chunk.js.map",
+    "main.js": "/excoin/static/js/main.ec0c507e.chunk.js",
+    "main.js.map": "/excoin/static/js/main.ec0c507e.chunk.js.map",
     "runtime~main.js": "/excoin/static/js/runtime~main.e410e7a8.js",
     "runtime~main.js.map": "/excoin/static/js/runtime~main.e410e7a8.js.map",
-    "static/js/2.b1e09d5a.chunk.js": "/excoin/static/js/2.b1e09d5a.chunk.js",
-    "static/js/2.b1e09d5a.chunk.js.map": "/excoin/static/js/2.b1e09d5a.chunk.js.map",
+    "static/js/2.be9c4e19.chunk.js": "/excoin/static/js/2.be9c4e19.chunk.js",
+    "static/js/2.be9c4e19.chunk.js.map": "/excoin/static/js/2.be9c4e19.chunk.js.map",
     "index.html": "/excoin/index.html",
-    "precache-manifest.513ed7cbd63c0454c087a9f8cd01b61f.js": "/excoin/precache-manifest.513ed7cbd63c0454c087a9f8cd01b61f.js",
+    "precache-manifest.acb9aacbf318e50f4391dec6d6c9fbcc.js": "/excoin/precache-manifest.acb9aacbf318e50f4391dec6d6c9fbcc.js",
     "service-worker.js": "/excoin/service-worker.js",
     "static/media/support.svg": "/excoin/static/media/support.59ff7ce2.svg",
     "static/media/waves.svg": "/excoin/static/media/waves.bd7a17c8.svg"
