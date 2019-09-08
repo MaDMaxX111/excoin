@@ -2,13 +2,14 @@ import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import {buttonText} from '../cssHelpers';
 import { LinkButton } from './Common';
-export const StaledWrapMainBanner = styled.div`
+export const StyledWrapMainBanner = styled.div`
   background-repeat: no-repeat;
   background-position: 0 100%;
   background-size: 100%;
   background-color: ${props => props.theme.palette.background.main};
   background-image: url("${props => props.backgroundImage}");
   padding: ${props => props.theme.spacing(49, 0, 10, 0)};
+  position: relative;
   & h2{
     margin-bottom: ${props => props.theme.spacing(7)}px;
   }
@@ -17,6 +18,7 @@ export const StaledWrapMainBanner = styled.div`
     padding: ${props => props.theme.spacing(0, 75)};
     margin-bottom: ${props => props.theme.spacing(15)}px;
   }
+  
   ${props => props.theme.breakpoints.down('md')} {
     & .MuiContainer-root > .MuiGrid-container {
       flex-direction: column;
@@ -31,7 +33,7 @@ export const StaledWrapMainBanner = styled.div`
   }
 `;
 
-export const StaledWrapForm = styled.div`
+export const StyledWrapForm = styled.div`
   flex: 1;
   padding: ${props => props.theme.spacing(0, 75)};
   margin-bottom: ${props => props.theme.spacing(26)}px;
@@ -89,10 +91,10 @@ export const StyledButton = styled(Button)`
   }
 `;
 
-export const StaledWrapCharts = styled.div`
+export const StyledWrapCharts = styled.div`
   margin-bottom: ${props => props.theme.spacing(10)}px;
 `;
-export const StaledWrapChart = styled.div`
+export const StyledWrapChart = styled.div`
   border-radius: ${props => props.theme.spacing(1)}px;
   background-color: ${props => props.theme.palette.background.defaultTransparent};
   display: flex;
@@ -141,7 +143,7 @@ export const StaledWrapChart = styled.div`
   }
 `;
 
-export const StaledWrapNews = styled.div`  
+export const StyledWrapNews = styled.div`  
   display: flex;
   .marquee {
     display: flex;

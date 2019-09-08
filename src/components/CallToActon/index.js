@@ -3,8 +3,8 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import { FormattedMessage } from "react-intl";
 import {
-    StaledWrapCallToAction,
-    StaledWrapText,
+    StyledWrapCallToAction,
+    StyledWrapText,
     StyledWrapButton,
     StyledWrapDelimeter,
 } from '../../styles/components/CallToAction';
@@ -14,17 +14,17 @@ import { LinkButton } from "../../styles/components/Common";
 
 const CallToActon = () => {
     return (
-        <StaledWrapCallToAction backgroundImage={background}>
+        <StyledWrapCallToAction backgroundImage={background}>
             <Container>
                 <Grid
                     container
                     justify="center"
                 >
                     <Grid key={1} item lg={6} md={12}>
-                        <StaledWrapText>
+                        <StyledWrapText>
                             <h2><FormattedMessage id={'banner.gettingStarted'}/></h2>
                             <p><FormattedMessage id={'text.weProvide'} /></p>
-                        </StaledWrapText>
+                        </StyledWrapText>
                     </Grid>
                     <Grid key={2} item lg={6} md={12}>
                         <StyledWrapButton>
@@ -37,7 +37,7 @@ const CallToActon = () => {
                     </Grid>
                 </Grid>
             </Container>
-        </StaledWrapCallToAction>
+        </StyledWrapCallToAction>
     )
 }
 

@@ -4,7 +4,7 @@ import { AreaChart, Area } from 'recharts';
 
 import { useDimensions } from '../../utils';
 import {
-    StaledWrapChart
+    StyledWrapChart
 } from '../../styles/components/MainBanner';
 
 
@@ -28,7 +28,7 @@ const Chart = () => {
 
     return (
         //low hi
-        <StaledWrapChart low={'true'}>
+        <StyledWrapChart low={'true'}>
             <div className={'caption'}>
                 <div className={'title'}>BNB/BTC</div>
                 <div className={'valuerate'}><span className={'value'}>0.00000017571</span><span
@@ -55,7 +55,7 @@ const Chart = () => {
                     </text>
                 </AreaChart>
             </div>
-        </StaledWrapChart>
+        </StyledWrapChart>
     );
 }
 

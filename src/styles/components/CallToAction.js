@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { LinkButton } from "./Common";
 
-export const StaledWrapCallToAction = styled.div`
+export const StyledWrapCallToAction = styled.div`
   background-repeat: no-repeat;
   background-position: 0 100%;
   background-size: 100%;
@@ -13,7 +13,7 @@ export const StaledWrapCallToAction = styled.div`
   }
 `;
 
-export const StaledWrapText = styled.div`
+export const StyledWrapText = styled.div`
   text-align: left;
   color: ${props => props.theme.palette.primary.text};
   & > h2 {

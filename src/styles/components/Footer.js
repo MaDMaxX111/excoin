@@ -75,6 +75,16 @@ export const StyledInformationWrap = styled.ul`
       color: ${props => props.theme.palette.primary.text};
     }
   }
+  ${props => props.theme.breakpoints.down('sm')} {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    & li {
+      &:not(:first-of-type) {
+        margin: 0;
+      }
+    }
+  }
 `;
 
 export const StyledIconButton = styled(IconButton)`

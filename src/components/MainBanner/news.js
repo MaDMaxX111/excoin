@@ -2,7 +2,7 @@ import React from 'react';
 import { FormattedMessage } from "react-intl";
 import Link from "@material-ui/core/Link";
 import {
-    StaledWrapNews
+    StyledWrapNews
 } from '../../styles/components/MainBanner';
 import { LinkButton } from '../../styles/components/Common';
 import { NEWS_URL } from '../../constants/route'
@@ -14,7 +14,7 @@ const News = () => {
     const { width: marqueeWidth } = marqueeSize || {};
 
     return (
-        <StaledWrapNews animateWidth={marqueeWidth} playAnimate={isVisible}>
+        <StyledWrapNews animateWidth={marqueeWidth} playAnimate={isVisible}>
             <LinkButton to={NEWS_URL}><FormattedMessage id={'link.news'} /></LinkButton>
             <div className={'marquee'} ref={marqueeRef}>
                 <span>
@@ -28,7 +28,7 @@ const News = () => {
                 )}
                 </span>
             </div>
-        </StaledWrapNews>
+        </StyledWrapNews>
     );
 }
 

@@ -5,7 +5,7 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import nanoid from 'nanoid';
 import {
-    StaledWrapForm, StyledButton
+    StyledWrapForm, StyledButton
 } from '../../styles/components/MainBanner';
 
 
@@ -16,7 +16,7 @@ const SubscribeSchema = Yup.object().shape({
 });
 
 const SubscribeFrorm = () => (
-    <StaledWrapForm>
+    <StyledWrapForm>
         <Formik
             initialValues={{ email: ''}}
             validationSchema={SubscribeSchema}
@@ -62,7 +62,7 @@ const SubscribeFrorm = () => (
                 </Form>
             )}}
         </Formik>
-    </StaledWrapForm>
+    </StyledWrapForm>
 );
 
 export default SubscribeFrorm;

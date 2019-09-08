@@ -4,8 +4,8 @@ import Container from '@material-ui/core/Container';
 import Typography from "@material-ui/core/Typography";
 import { FormattedMessage } from "react-intl";
 import {
-    StaledWrapMainBanner,
-    StaledWrapCharts,
+    StyledWrapMainBanner,
+    StyledWrapCharts,
 } from '../../styles/components/MainBanner';
 import background from '../../images/waves.svg';
 import SubscribeFrorm from './subscribeform';
@@ -14,7 +14,7 @@ import News from './news';
 
 const MainBanner = () => {
     return (
-        <StaledWrapMainBanner backgroundImage={background}>
+        <StyledWrapMainBanner backgroundImage={background}>
             <Container>
                 <Grid
                     container
@@ -26,7 +26,7 @@ const MainBanner = () => {
                     <Typography variant={'body1'}><FormattedMessage id={'banner.text'}/></Typography>
                     <SubscribeFrorm />
                 </Grid>
-                <StaledWrapCharts>
+                <StyledWrapCharts>
                     <Grid container justify="center" spacing={8}>
                         {[0, 1, 2, 3].map(value => (
                             <Grid key={value} item lg={3} md={6} xs={12}>
@@ -34,10 +34,10 @@ const MainBanner = () => {
                             </Grid>
                         ))}
                     </Grid>
-                </StaledWrapCharts>
+                </StyledWrapCharts>
                 <News />
             </Container>
-        </StaledWrapMainBanner>
+        </StyledWrapMainBanner>
     )
 }
 

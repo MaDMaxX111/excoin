@@ -8,6 +8,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import MainBanner from "./components/MainBanner";
 import CallToActon from "./components/CallToActon";
+import LatestNews from "./components/LatestNews";
+import Features from "./components/Features";
 
 export const MainContainer = ({ currentLanguage }) => {
 
@@ -19,6 +21,8 @@ export const MainContainer = ({ currentLanguage }) => {
                 <Header/>
                 <ContentWrap>
                     <MainBanner />
+                    <Features />
+                    <LatestNews />
                     <CallToActon />
                 </ContentWrap>
                 <Footer/>

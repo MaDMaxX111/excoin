@@ -17,3 +17,30 @@ export const LinkButton = styled(Link)`
         }
     }
 `;
+
+export const StyledWrapTitle = styled.div`
+  color: ${props => props.theme.palette.primary.textGrey};
+  text-align: center;
+  text-transform: uppercase;
+  position:relative;
+  & h3 {
+    font-size: 16px;
+    font-weight: bold;
+    display: inline;
+    position:relative;
+    z-index: 1;
+    padding: ${props => props.theme.spacing(0, 8)};
+    background: ${props => props.theme.palette.primary.text};
+    color: #5f5f5f;
+  }
+  &:before {
+    z-index: 0;
+    content: '';
+    background-color: ${props => props.theme.palette.primary.textLightGrey};
+    width: 100%;
+    height: 1px;
+    position:absolute;
+    left: 0;
+    top: 50%;
+  }
+`;

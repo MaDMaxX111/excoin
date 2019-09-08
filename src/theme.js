@@ -8,6 +8,8 @@ const palette = {
         textHover: '#8E94A6',
         textHoverBlue: '#1652f0',
         textBlack: '#000',
+        textGrey: '#5F5F5F',
+        textLightGrey: '#e8e9eb',
     },
     secondary: {
         main: '#19857b',
@@ -39,6 +41,10 @@ const theme = createMuiTheme({
     palette,
     transition: {
         main: 'all 0.3s ease, color 0.2s linear',
+    },
+    boxShadow: {
+        main: '0px 1px 5px rgba(0,0,0,.03)',
+        big: '0px 20px 45px 0px rgba(0, 0, 0, 0.05)'
     },
     spacing: 4,
     breakpoints: {
