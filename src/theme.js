@@ -10,6 +10,8 @@ const palette = {
         textBlack: '#000',
         textGrey: '#5F5F5F',
         textLightGrey: '#e8e9eb',
+        darkBlue: '#1C2437',
+        lightGrey: '#edeef0'
     },
     secondary: {
         main: '#19857b',

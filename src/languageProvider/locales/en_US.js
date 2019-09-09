@@ -40,4 +40,10 @@ export default {
   "form.getStartNow": "Get Start Now",
   "error.email": "Invalid email format",
   "error.emailRequered": "Email required",
+  "table.columnPair": "Pair",
+  "table.columnLastPrice": "Last Price",
+  "table.column24hChange": "24h Change",
+  "table.column24hHigh": "24h High",
+  "table.column24hLow": "24h Low",
+  "table.column24hVolume": "24h Volume"
 };
