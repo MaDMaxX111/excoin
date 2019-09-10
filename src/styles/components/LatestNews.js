@@ -2,10 +2,6 @@ import styled from 'styled-components';
 import { StyledWrapTitle } from './Common';
 
 export const StyledWrapLatestNews = styled.div`
-
-  border: 1px solid red;
-  box-sizing: border-box;
-  
   padding: ${props => props.theme.spacing(30,0)};
   ${StyledWrapTitle} {
     margin-bottom: ${props => props.theme.spacing(14)}px;

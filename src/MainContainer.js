@@ -11,6 +11,7 @@ import CallToActon from "./components/CallToActon";
 import LatestNews from "./components/LatestNews";
 import Features from "./components/Features";
 import MarketsTable from "./components/MarketsTable";
+import OurWallets from "./components/OurWallets";
 
 export const MainContainer = ({ currentLanguage }) => {
 
@@ -24,6 +25,7 @@ export const MainContainer = ({ currentLanguage }) => {
                     <MainBanner />
                     <MarketsTable />
                     <Features />
+                    <OurWallets />
                     <LatestNews />
                     <CallToActon />
                 </ContentWrap>

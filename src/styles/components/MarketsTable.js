@@ -3,9 +3,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Table from '@material-ui/core/Table';
 
 export const StyledWrapMarketsTable = styled.div`
-  //height: 500px;
-  border: 1px solid red;
-  padding: 20px;
+  padding: ${props => props.theme.spacing(15,0)};
 `;
 
 export const StyledTabs = styled(Tabs)`
@@ -27,7 +25,7 @@ export const StyledTabs = styled(Tabs)`
           flex-direction: row;
           justify-content: space-between;
           & .svg-inline--fa {
-            margin-right: ${props => props.theme.spacing(7)}px;;
+            margin-right: ${props => props.theme.spacing(7)}px;
           }
         }
         & .MuiTouchRipple-root {
@@ -52,6 +50,7 @@ export const StyledTabs = styled(Tabs)`
           background-color: ${props => props.theme.palette.background.lightGrey};
           & .MuiInputBase-input {
             background-color: ${props => props.theme.palette.background.lightGrey};
+            color: ${props => props.theme.palette.primary.textHoverBlue};
           }
         }
         & .MuiTextField-root {
@@ -77,6 +76,12 @@ export const StyledTabs = styled(Tabs)`
 export const StyledWrapTable = styled(Table)`
   border: 1px solid ${props => props.theme.palette.border.lightBlue};
   border-top: none;
+  & .svg-inline--fa {
+    cursor: pointer;
+  }
+  & .orange {
+    color: ${props => props.theme.palette.common.orange};
+  }
   & .MuiTableRow-head {
     background-color: ${props => props.theme.palette.background.lightGrey};
     & .MuiTableCell-head {
@@ -84,7 +89,9 @@ export const StyledWrapTable = styled(Table)`
       font-size: 14px;
       color: ${props => props.theme.palette.primary.tableGrey};
       line-height: 1.57;
-      padding: 0;
+      padding-top: ${props => props.theme.spacing(4)}px;
+      padding-bottom: ${props => props.theme.spacing(3)}px;
+      padding-left: ${props => props.theme.spacing(1)}px;
     }
   }
   & .MuiTableCell-body, & .MuiTableCell-head {
@@ -101,15 +108,24 @@ export const StyledWrapTable = styled(Table)`
     }
   }
   & .MuiTableCell-body {
-    padding-top: ${props => props.theme.spacing(5)}px;
-    padding-bottom: ${props => props.theme.spacing(5)}px;
-    &.favorite {
-      text-align: center;
-      padding-left: ${props => props.theme.spacing(4)}px;
-      padding-right: ${props => props.theme.spacing(4)}px;
-    }
-    &.pair {
-      //padding: ${props => props.theme.spacing(5, 1)};
-    }
+      padding-top: ${props => props.theme.spacing(5)}px;
+      padding-bottom: ${props => props.theme.spacing(5)}px;
+      padding-left: ${props => props.theme.spacing(1)}px;
+      color: ${props => props.theme.palette.primary.tableDarkGrey};
+      font-weight: 600;
+      &.pair {
+        font-weight: 400;
+      }
+      &.favorite {
+        text-align: center;
+        padding-left: ${props => props.theme.spacing(4)}px;
+        padding-right: ${props => props.theme.spacing(4)}px;
+      }
+      & .high {
+          color: ${props => props.theme.palette.common.green};
+      }
+      & .low {
+          color: ${props => props.theme.palette.common.red};
+      }
   }
 `;
