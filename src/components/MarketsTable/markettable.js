@@ -4,10 +4,9 @@ import { AreaChart, Area } from 'recharts';
 
 import { useDimensions } from '../../utils';
 import {
-    StyledWrapChart
-} from '../../styles/components/MainBanner';
+    StyledWrapTable
+} from '../../styles/components/MarketsTable';
 import PropTypes from "prop-types";
-import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
@@ -112,7 +111,7 @@ const rows = [
 
 const MarketTable = ({ market }) => {
     return (
-        <Table>
+        <StyledWrapTable>
             <TableHead>
                 <TableRow>
                     <TableCell></TableCell>
@@ -127,11 +126,11 @@ const MarketTable = ({ market }) => {
             <TableBody>
                 {rows.map((row, index) => (
                     <TableRow key={index}>
-                        <TableCell>
+                        <TableCell className={'favorite'}>
                             <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStarOpen} />
+                            {/*<FontAwesomeIcon icon={faStarOpen} />*/}
                         </TableCell>
-                        <TableCell>{row.pair}</TableCell>
+                        <TableCell className={'pair'}>{row.pair}</TableCell>
                         <TableCell>{row.lastPrice[0]}{row.lastPrice[1]}</TableCell>
                         <TableCell>{row['24hChange']}</TableCell>
                         <TableCell>{row['24hHigh']}</TableCell>
@@ -140,7 +139,7 @@ const MarketTable = ({ market }) => {
                     </TableRow>
                 ))}
             </TableBody>
-        </Table>
+        </StyledWrapTable>
     );
 }
 

@@ -33,6 +33,7 @@ export default {
   "text.weProvide": "We provide professional and secure trading services for investors",
   "text.or": "or",
   "text.readMore": "Read More",
+  "text.search": "Search ...",
   "banner.buyAndSellCryptocurrency": "Buy and Sell Cryptocurrency",
   "banner.text": "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text",
   "banner.gettingStarted": "Getting started",

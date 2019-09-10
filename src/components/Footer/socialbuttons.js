@@ -1,5 +1,4 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import Link from '@material-ui/core/Link';
 import {
     faFacebookF,
@@ -47,12 +46,5 @@ const SocialButtons = () => {
         </StyledSocialButtonsContainer>
     )
 }
-
-// NavigationButtons.propTypes = {
-//     links: PropTypes.arrayOf(PropTypes.shape({
-//         href: PropTypes.string,
-//         text: PropTypes.string
-//     })),
-// };
 
 export default SocialButtons;
