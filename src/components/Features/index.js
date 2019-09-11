@@ -40,7 +40,7 @@ const Features = () => {
                 >
                     <Grid container justify="center" spacing={6}>
                         {features.map((content, index) => (
-                            <Grid key={index} item lg={6} xs={12}>
+                            <Grid key={index} item lg={6} md={6} xs={12}>
                                 <FeatureItem {...content} />
                             </Grid>
                         ))}

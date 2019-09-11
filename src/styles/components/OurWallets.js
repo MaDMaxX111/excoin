@@ -4,9 +4,11 @@ import { LinkButton } from "../../styles/components/Common";
 
 export const StyledWrapOurWallets = styled.div`
   padding: ${props => props.theme.spacing(15,0)};
-  border: 1px solid red;
   ${StyledWrapTitle} {
     margin-bottom: ${props => props.theme.spacing(9)}px;
+  }
+  ${props => props.theme.breakpoints.down('xs')} {
+    padding: ${props => props.theme.spacing(7,0)};
   }
 `;
 
@@ -15,7 +17,7 @@ export const StyledWrapBanner = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: ${props => props.theme.spacing(9)}px;
+  margin-bottom: ${props => props.theme.spacing(4)}px;
   & img {
     margin-bottom: ${props => props.theme.spacing(8)}px;
   }
@@ -26,19 +28,24 @@ export const StyledWrapBanner = styled.div`
     font-weight: bold;
     margin-top: ${props => props.theme.spacing(0)}px;
     margin-bottom: ${props => props.theme.spacing(2)}px;
+    text-align: center;
     &:last-of-type {
       color: ${props => props.theme.palette.primary.textHoverBlue};
     }
   }
 `;
 export const StyledWrapDownloadForm = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   & .MuiFormGroup-root {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-bottom: ${props => props.theme.spacing(12)}px;
     & .MuiFormControlLabel-root {
-      margin: 0;
+      margin: ${props => props.theme.spacing(5,0,0)};
       padding: 0;
       display: flex;
       flex-direction: column;
@@ -70,14 +77,9 @@ export const StyledWrapDownloadForm = styled.div`
     }
   }
   ${LinkButton} {
-    border: 2px solid ${props => props.theme.palette.background.defaultTransparent};
-    // background-color: ${props => props.theme.palette.background.defaultTransparent};
-    background-color: red;
-    padding: ${props => props.theme.spacing(5, 10)};
-    &:hover {
-      border-color: ${props => props.theme.palette.background.default};
-      background-color: ${props => props.theme.palette.background.default};
-      color: ${props => props.theme.palette.primary.textHoverBlue};
-    }
+    text-transform: capitalize;
+    border: none;
+    background-color: ${props => props.theme.palette.primary.textHoverBlue};
+    padding: ${props => props.theme.spacing(5, 12)};
   }
 `;

@@ -37,6 +37,7 @@ export default {
   "text.search": "Search ...",
   "text.compatibleWallets": "Fully compatible with iOS, Android, Mac & Windows",
   "text.selectDownload": "Select one & Download",
+  "text.downloadNow": "Download now",
   "banner.buyAndSellCryptocurrency": "Buy and Sell Cryptocurrency",
   "banner.text": "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text",
   "banner.gettingStarted": "Getting started",

@@ -11,6 +11,7 @@ export const LinkButton = styled(Link)`
         padding: ${props => props.theme.spacing(1.5, 2.5)};
         cursor: pointer;
         border: 1px solid ${props => props.theme.palette.border.blue};
+        ${props => props.disabled && `cursor: none; pointer-events: none; opacity: 0.6`}
         &.active, &:hover {
           background-color: ${props => props.theme.palette.background.blue};
           text-decoration: none;   

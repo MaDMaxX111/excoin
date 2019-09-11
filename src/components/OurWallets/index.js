@@ -1,7 +1,13 @@
-import React, {useState} from 'react';
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
+import React, { useState } from 'react';
+import PropTypes from "prop-types";
 import { FormattedMessage, injectIntl } from "react-intl";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faApple, faAndroid, faWindows } from "@fortawesome/free-brands-svg-icons";
+import Container from '@material-ui/core/Container';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+
 import {
     StyledWrapOurWallets,
     StyledWrapBanner,
@@ -9,51 +15,36 @@ import {
 } from '../../styles/components/OurWallets';
 import Title from '../Common/title';
 import walletsApp from '../../images/walletsapp.svg';
-import PropTypes from "prop-types";
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { faApple, faAndroid, faWindows } from "@fortawesome/free-brands-svg-icons";
-import { faStar as faStarOpen, faStar } from '@fortawesome/free-regular-svg-icons';
-
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
-import TableCell from "@material-ui/core/TableCell";
-import {JOIN_US_URL} from "../../constants/route";
-import {LinkButton} from "../../styles/components/Common";
+import { LinkButton } from "../../styles/components/Common";
 
 const brands = [{
-    label: 'iPhone',
-    icon: <FontAwesomeIcon icon={faApple}/>,
-    value: 'iphone',
-},
+        label: 'iPhone',
+        icon: <FontAwesomeIcon icon={faApple}/>,
+        href: 'iphone',
+    },
     {
         label: 'Android',
         icon: <FontAwesomeIcon icon={faAndroid}/>,
-        value: 'android',
+        href: 'android',
     },
     {
         label: 'Windows',
         icon: <FontAwesomeIcon icon={faWindows}/>,
-        value: 'windows',
+        href: 'windows',
     },
     {
         label: 'iMac',
         icon: <FontAwesomeIcon icon={faApple}/>,
-        value: 'imac',
+        href: 'imac',
     }
 ]
 const OurWallets = ({intl}) => {
 
-    const [selectedBrand, setBrand] = useState(null);
+    const [selectedBrandHref, setBrand] = useState(null);
 
-    const handleSelectBrand = (value) => {
-        setBrand(value);
+    const handleSelectBrand = (event) => {
+        const { target } = event;
+        target && setBrand(target.value);
     }
 
     return (
@@ -67,12 +58,14 @@ const OurWallets = ({intl}) => {
                     <p><FormattedMessage id={'text.selectDownload'}/></p>
                 </StyledWrapBanner>
                 <StyledWrapDownloadForm>
-                    <RadioGroup aria-label="brands" value={selectedBrand} onChange={handleSelectBrand}>
+                    <RadioGroup aria-label="brands" value={selectedBrandHref || ''} onChange={handleSelectBrand}>
                         {brands.map((brand, index) =>
-                            <FormControlLabel key={index} value={brand.value} control={<Radio icon={brand.icon} checkedIcon={brand.icon} />} label={brand.label}/>
+                            <FormControlLabel key={index} value={brand.href}
+                                              control={<Radio icon={brand.icon} checkedIcon={brand.icon}/>}
+                                              label={brand.label}/>
                         )}
                     </RadioGroup>
-                    <LinkButton to={JOIN_US_URL}><FormattedMessage id={'link.CreateAccount'} /></LinkButton>
+                    <LinkButton href={selectedBrandHref} disabled={!!selectedBrandHref ? false : true}><FormattedMessage id={'text.downloadNow'}/></LinkButton>
                 </StyledWrapDownloadForm>
             </Container>
         </StyledWrapOurWallets>
