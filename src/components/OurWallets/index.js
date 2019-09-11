@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import { FormattedMessage, injectIntl } from "react-intl";
@@ -24,6 +24,8 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import TableCell from "@material-ui/core/TableCell";
+import {JOIN_US_URL} from "../../constants/route";
+import {LinkButton} from "../../styles/components/Common";
 
 const brands = [{
     label: 'iPhone',
@@ -47,6 +49,13 @@ const brands = [{
     }
 ]
 const OurWallets = ({intl}) => {
+
+    const [selectedBrand, setBrand] = useState(null);
+
+    const handleSelectBrand = (value) => {
+        setBrand(value);
+    }
+
     return (
         <StyledWrapOurWallets>
             <Container>
@@ -58,14 +67,12 @@ const OurWallets = ({intl}) => {
                     <p><FormattedMessage id={'text.selectDownload'}/></p>
                 </StyledWrapBanner>
                 <StyledWrapDownloadForm>
-                    <RadioGroup aria-label="brands" value={''} onChange={(e) => {
-                        console.log(e)
-                    }}>
+                    <RadioGroup aria-label="brands" value={selectedBrand} onChange={handleSelectBrand}>
                         {brands.map((brand, index) =>
-                            <FormControlLabel key={index} value={brand.value} control={<Radio icon={brand.icon}/>}
-                                              label={brand.label}/>
+                            <FormControlLabel key={index} value={brand.value} control={<Radio icon={brand.icon} checkedIcon={brand.icon} />} label={brand.label}/>
                         )}
                     </RadioGroup>
+                    <LinkButton to={JOIN_US_URL}><FormattedMessage id={'link.CreateAccount'} /></LinkButton>
                 </StyledWrapDownloadForm>
             </Container>
         </StyledWrapOurWallets>
