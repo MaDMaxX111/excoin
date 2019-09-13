@@ -12,6 +12,7 @@ import LatestNews from "./components/LatestNews";
 import Features from "./components/Features";
 import MarketsTable from "./components/MarketsTable";
 import OurWallets from "./components/OurWallets";
+import TabsCategories from "./components/TabsCategories";
 
 export const MainContainer = ({ currentLanguage }) => {
 
@@ -25,6 +26,7 @@ export const MainContainer = ({ currentLanguage }) => {
                     <MainBanner />
                     <MarketsTable />
                     <Features />
+                    <TabsCategories />
                     <OurWallets />
                     <LatestNews />
                     <CallToActon />

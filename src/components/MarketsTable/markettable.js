@@ -4,13 +4,14 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { FormattedMessage } from "react-intl";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar as faStarOpen } from '@fortawesome/free-regular-svg-icons';
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import {FormattedMessage} from "react-intl";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faStar as faStarOpen} from '@fortawesome/free-regular-svg-icons';
+import {faStar} from "@fortawesome/free-solid-svg-icons";
 
 import {
-    StyledWrapTable
+    StyledWrapTable,
+    StyledWrapTableContainer,
 } from '../../styles/components/MarketsTable';
 
 const rows = [
@@ -116,36 +117,40 @@ const rows = [
     },
 ];
 
-const MarketTable = ({ market }) => {
+const MarketTable = ({market}) => {
     return (
-        <StyledWrapTable>
-            <TableHead>
-                <TableRow>
-                    <TableCell></TableCell>
-                    <TableCell className={'pair'}><FormattedMessage id={'table.columnPair'}/></TableCell>
-                    <TableCell><FormattedMessage id={'table.columnLastPrice'}/></TableCell>
-                    <TableCell><FormattedMessage id={'table.column24hChange'}/></TableCell>
-                    <TableCell><FormattedMessage id={'table.column24hHigh'}/></TableCell>
-                    <TableCell><FormattedMessage id={'table.column24hLow'}/></TableCell>
-                    <TableCell><FormattedMessage id={'table.column24hVolume'}/></TableCell>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                {rows.map((row, index) => (
-                    <TableRow key={index}>
-                        <TableCell className={'favorite'}>
-                            <FontAwesomeIcon icon={row.inFavorite ? faStar : faStarOpen} className={row.inFavorite ? 'orange' : ''} />
-                        </TableCell>
-                        <TableCell className={'pair'}>{row.pair}</TableCell>
-                        <TableCell className={'lastPrice'}><span className={row.direction}>{row.lastPrice[0]}</span> / {row.lastPrice[1]}</TableCell>
-                        <TableCell className={'24hChange'}><span className={row.direction}>{row['24hChange']}</span></TableCell>
-                        <TableCell>{row['24hHigh']}</TableCell>
-                        <TableCell>{row['24hLow']}</TableCell>
-                        <TableCell>{row['24hVolume']}</TableCell>
+        <StyledWrapTableContainer>
+            <StyledWrapTable>
+                <TableHead>
+                    <TableRow>
+                        <TableCell className={'favorite'}></TableCell>
+                        <TableCell className={'pair'}><FormattedMessage id={'table.columnPair'}/></TableCell>
+                        <TableCell className={'lastPrice'}><FormattedMessage id={'table.columnLastPrice'}/></TableCell>
+                        <TableCell className={'_24hChange'}><FormattedMessage id={'table.column24hChange'}/></TableCell>
+                        <TableCell className={'_24hHigh'}><FormattedMessage id={'table.column24hHigh'}/></TableCell>
+                        <TableCell className={'_24hLow'}><FormattedMessage id={'table.column24hLow'}/></TableCell>
+                        <TableCell className={'_24hVolume'}><FormattedMessage id={'table.column24hVolume'}/></TableCell>
                     </TableRow>
-                ))}
-            </TableBody>
-        </StyledWrapTable>
+                </TableHead>
+                <TableBody>
+                    {rows.map((row, index) => (
+                        <TableRow key={index}>
+                            <TableCell className={'favorite'}>
+                                <FontAwesomeIcon icon={row.inFavorite ? faStar : faStarOpen}
+                                                 className={row.inFavorite ? 'orange' : ''}/>
+                            </TableCell>
+                            <TableCell className={'pair'}>{row.pair}</TableCell>
+                            <TableCell className={'lastPrice'}><span className={row.direction}>{row.lastPrice[0]}</span><span> / {row.lastPrice[1]}</span></TableCell>
+                            <TableCell className={'_24hChange'}><span
+                                className={row.direction}>{row['24hChange']}</span></TableCell>
+                            <TableCell className={'_24hHigh'}>{row['24hHigh']}</TableCell>
+                            <TableCell className={'_24hLow'}>{row['24hLow']}</TableCell>
+                            <TableCell className={'_24hVolume'}>{row['24hVolume']}</TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </StyledWrapTable>
+        </StyledWrapTableContainer>
     );
 }
 

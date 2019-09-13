@@ -14,6 +14,7 @@ import {
 } from '../../styles/components/MarketsTable';
 
 import MarketTable from './markettable';
+import nanoid from "nanoid";
 
 const tabs = [
     {
@@ -46,24 +47,21 @@ const MarketsTable = ({intl}) => {
         setMarket(newValue);
     }
 
+    const idInputSearch = nanoid();
     const t = tabs.concat([    {
         market: 'search',
-        label: <><TextField
-            // InputLabelProps={{
-            //     htmlFor: idMailField,
-            // }}
-            // id={idMailField}
-            label={<FormattedMessage id={'text.search'} />}
-            placeholder={intl.formatMessage({id: 'text.search'})}
-            // value={values.email}
-            // error={!!errors.email && touched.email}
-            // helperText={(errors.email && touched.email) ? errors.email : null}
-            // onChange={handleChange}
-            // onBlur={handleBlur}
-
-        />
-            <FontAwesomeIcon icon={faSearch} />
-        </>,
+        label:
+            <>
+                <TextField
+                    InputLabelProps={{
+                        htmlFor: idInputSearch,
+                    }}
+                    label={<FormattedMessage id={'text.search'} />}
+                    placeholder={intl.formatMessage({id: 'text.search'})}
+                    id={idInputSearch}
+                />
+                <FontAwesomeIcon icon={faSearch} />
+            </>,
     }])
 
     return (

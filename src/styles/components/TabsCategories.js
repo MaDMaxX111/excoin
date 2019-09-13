@@ -2,8 +2,26 @@ import styled from 'styled-components';
 import Tabs from '@material-ui/core/Tabs';
 import Table from '@material-ui/core/Table';
 
-export const StyledWrapMarketsTable = styled.div`
+export const StyledWrapCategories = styled.div`
   padding: ${props => props.theme.spacing(15,0)};
+  h3 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 36px;
+    color: ${props => props.theme.palette.primary.darkdarkBlue};
+    margin-bottom: ${props => props.theme.spacing(7)}px;
+  }
+  p {
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.6;
+    color: ${props => props.theme.palette.primary.textGrey};
+    padding: ${props => props.theme.spacing(0,75)};
+  }
+  
+  
+  
+  
   ${props => props.theme.breakpoints.down('xs')} {
     padding: ${props => props.theme.spacing(7,0)};
   }

@@ -14,6 +14,7 @@ const palette = {
         lightGrey: '#edeef0',
         tableGrey: '#888888',
         tableDarkGrey: '#797979',
+        darkdarkBlue: '#0B132D',
     },
     secondary: {
         main: '#19857b',
@@ -36,7 +37,7 @@ const palette = {
       lightBlue: '#aac9f0',
     },
     common: {
-        green: '#00c162',
+        green: '#008644',
         red: '#dc0000',
         orange: '#FF7700',
         greenTransparent: 'rgb(0, 193, 98, 0.102)',
