@@ -75,6 +75,7 @@ const MarketsTable = ({intl}) => {
                     }}
                     value={market}
                     onChange={handleChange}
+                    scrollButtons={'off'}
                 >
                     {t.map((tab, index) => <Tab label={tab.label} key={index} value={tab.market} />)}
                 </StyledTabs>

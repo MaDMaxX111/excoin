@@ -23,7 +23,7 @@ export const StyledTabs = styled(Tabs)`
         & .MuiTab-wrapper {
           display: flex;
           flex-direction: row;
-          justify-content: space-between;
+          justify-content: center;
           & .svg-inline--fa {
             margin-right: ${props => props.theme.spacing(7)}px;
           }
@@ -70,6 +70,46 @@ export const StyledTabs = styled(Tabs)`
       & .indicator {
         display: none;
       }
+  }
+   
+  ${props => props.theme.breakpoints.down('md')} {
+    & .MuiTabs-flexContainer {
+      flex-wrap: wrap;
+      flex-direction: row;
+      & .MuiButtonBase-root {
+        line-height: 1.3;
+        padding: ${props => props.theme.spacing(2,3)};
+        width: 33.33%;
+        border: 1px solid ${props => props.theme.palette.primary.lightGrey};
+        &:not(:first-of-type) {
+          border-left-color: ${props => props.theme.palette.primary.lightGrey};        
+        }
+        &.Mui-selected {
+          border-color: ${props => props.theme.palette.border.lightBlue};        
+        }
+        & .MuiTab-wrapper {
+          & .svg-inline--fa {
+            margin-right: ${props => props.theme.spacing(2)}px;
+          }
+        }
+      }
+      & .MuiTextField-root {
+        .MuiFormLabel-root {
+          width: 100%;
+        }
+      }
+      & .fa-search {
+        display: none;
+      }
+    }
+  }
+  
+  ${props => props.theme.breakpoints.down('xs')} {
+    & .MuiTabs-flexContainer {
+      & .MuiButtonBase-root {
+        width: 50%;
+      }
+    }
   }
 `;
 
