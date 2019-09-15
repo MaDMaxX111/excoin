@@ -19,26 +19,28 @@ export const StyledWrapCategories = styled.div`
   }
   
   .MuiTabs-root {
-    margin-bottom: ${props => props.theme.spacing(10)}px;
-    .MuiTab-root {
-      font-size: 18px;
-      color: ${props => props.theme.palette.primary.darkBlue};
-      text-transform: none;
-      font-weight: bold;
-      border-bottom: 1px solid ${props => props.theme.palette.primary.textLightGrey};
-      padding: ${props => props.theme.spacing(3.5,3.5)};
-      transition: none;
-      .MuiTouchRipple-root {
-        display: none;
-      }
-      .MuiTab-wrapper {
-        align-items: baseline;
-      }
-      &.Mui-selected {
-        color: ${props => props.theme.palette.primary.textHoverBlue};
-        box-shadow: 0px 16px 22px rgba(0,0,0,.03);
-        border-bottom: none;
-      }
+    .MuiTabs-flexContainer {
+        margin-bottom: ${props => props.theme.spacing(10)}px;
+        .MuiTab-root {
+          font-size: 18px;
+          color: ${props => props.theme.palette.primary.darkBlue};
+          text-transform: none;
+          font-weight: bold;
+          border-bottom: 1px solid ${props => props.theme.palette.primary.textLightGrey};
+          padding: ${props => props.theme.spacing(3.5, 3.5)};
+          transition: none;
+          .MuiTouchRipple-root {
+            display: none;
+          }
+          .MuiTab-wrapper {
+            align-items: baseline;
+          }
+          &.Mui-selected {
+            color: ${props => props.theme.palette.primary.textHoverBlue};
+            box-shadow: 0px 16px 22px rgba(0,0,0,.03);
+            border-bottom: none;
+          }
+        }
     }
     .MuiTabs-indicator {
         display: none;
