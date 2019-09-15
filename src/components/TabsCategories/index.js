@@ -1,73 +1,119 @@
 import React, { useState } from 'react';
-import PropTypes from "prop-types";
 import { FormattedMessage, injectIntl } from "react-intl";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faApple, faAndroid, faWindows } from "@fortawesome/free-brands-svg-icons";
 import Container from '@material-ui/core/Container';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-
+import Grid from "@material-ui/core/Grid";
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Hidden from '@material-ui/core/Hidden';
 import {
     StyledWrapCategories,
-    // StyledWrapBanner,
-    // StyledWrapDownloadForm,
+    StyledWrapperContent,
+    StyledImgWrap,
 } from '../../styles/components/TabsCategories';
-import Title from '../Common/title';
-import walletsApp from '../../images/walletsapp.svg';
-import { LinkButton } from "../../styles/components/Common";
+import walletImg from '../../images/wallet.png';
+import TabContent from './tabcontent';
+import logo from '../../images/walletlogo.png';
+import PropTypes from "prop-types";
 
-const brands = [{
-        label: 'iPhone',
-        icon: <FontAwesomeIcon icon={faApple}/>,
-        href: 'iphone',
+const wallets = [
+    {
+        label: 'Bread Wallet',
+        description: 'Advanced users searching for a Bitcoin mobile digital wallet, should look no further than mycelium. The Mycelium mobile wallet allows iPhone and Android users to send and receive bitcoins and keep complete control over bitcoins. No third party can freeze or lose your funds! With enterprise-level security superior to most other apps and features like cold storage and encrypted PDF backups, an integrated QR-code scanner receive bitcoins and keep.',
+        pros: 'Good privacy, advanced security, feature-rich, open source Software, free',
+        cons: 'No web or desktop interface, hot wallet, not for beginners',
+        image: logo,
     },
     {
-        label: 'Android',
-        icon: <FontAwesomeIcon icon={faAndroid}/>,
-        href: 'android',
+        label: 'Mycelium',
+        description: 'Advanced users searching for a Bitcoin mobile digital wallet, should look no further than mycelium. The Mycelium mobile wallet allows iPhone and Android users to send and receive bitcoins and keep complete control over bitcoins. No third party can freeze or lose your funds! With enterprise-level security superior to most other apps and features like cold storage and encrypted PDF backups, an integrated QR-code scanner receive bitcoins and keep.',
+        pros: 'Good privacy, advanced security, feature-rich, open source Software, free',
+        cons: 'No web or desktop interface, hot wallet, not for beginners',
+        image: logo,
     },
     {
-        label: 'Windows',
-        icon: <FontAwesomeIcon icon={faWindows}/>,
-        href: 'windows',
+        label: 'Exodus',
+        description: 'Advanced users searching for a Bitcoin mobile digital wallet, should look no further than mycelium. The Mycelium mobile wallet allows iPhone and Android users to send and receive bitcoins and keep complete control over bitcoins. No third party can freeze or lose your funds! With enterprise-level security superior to most other apps and features like cold storage and encrypted PDF backups, an integrated QR-code scanner receive bitcoins and keep.',
+        pros: 'Good privacy, advanced security, feature-rich, open source Software, free',
+        cons: 'No web or desktop interface, hot wallet, not for beginners',
+        image: logo,
     },
     {
-        label: 'iMac',
-        icon: <FontAwesomeIcon icon={faApple}/>,
-        href: 'imac',
-    }
-]
+        label: 'Copay',
+        description: 'Advanced users searching for a Bitcoin mobile digital wallet, should look no further than mycelium. The Mycelium mobile wallet allows iPhone and Android users to send and receive bitcoins and keep complete control over bitcoins. No third party can freeze or lose your funds! With enterprise-level security superior to most other apps and features like cold storage and encrypted PDF backups, an integrated QR-code scanner receive bitcoins and keep.',
+        pros: 'Good privacy, advanced security, feature-rich, open source Software, free',
+        cons: 'No web or desktop interface, hot wallet, not for beginners',
+        image: logo,
+    },
+    {
+        label: 'Ledger Nano',
+        description: 'Advanced users searching for a Bitcoin mobile digital wallet, should look no further than mycelium. The Mycelium mobile wallet allows iPhone and Android users to send and receive bitcoins and keep complete control over bitcoins. No third party can freeze or lose your funds! With enterprise-level security superior to most other apps and features like cold storage and encrypted PDF backups, an integrated QR-code scanner receive bitcoins and keep.',
+        pros: 'Good privacy, advanced security, feature-rich, open source Software, free',
+        cons: 'No web or desktop interface, hot wallet, not for beginners',
+        image: logo,
+    },
+];
+
 const TabsCategories = ({intl}) => {
 
-    // const [selectedBrandHref, setBrand] = useState(null);
-    //
-    // const handleSelectBrand = (event) => {
-    //     const { target } = event;
-    //     target && setBrand(target.value);
-    // }
+    const [value, setValue] = useState(0);
+
+    function handleChange(event, newValue) {
+        setValue(newValue);
+    }
 
     return (
         <StyledWrapCategories>
             <Container>
                 <h3><FormattedMessage id={'title.categoriesOfWallets'}/></h3>
                 <p><FormattedMessage id={'text.descriptionCategory'}/></p>
-                {/*<StyledWrapBanner>*/}
-                {/*    <img src={walletsApp} alt={intl.formatMessage({id: 'text.selectDownload'})}*/}
-                {/*         title={intl.formatMessage({id: 'text.selectDownload'})}/>*/}
-                {/*    <p><FormattedMessage id={'text.compatibleWallets'}/></p>*/}
-                {/*    <p><FormattedMessage id={'text.selectDownload'}/></p>*/}
-                {/*</StyledWrapBanner>*/}
-                {/*<StyledWrapDownloadForm>*/}
-                {/*    <RadioGroup aria-label="brands" value={selectedBrandHref || ''} onChange={handleSelectBrand}>*/}
-                {/*        {brands.map((brand, index) =>*/}
-                {/*            <FormControlLabel key={index} value={brand.href}*/}
-                {/*                              control={<Radio icon={brand.icon} checkedIcon={brand.icon}/>}*/}
-                {/*                              label={brand.label}/>*/}
-                {/*        )}*/}
-                {/*    </RadioGroup>*/}
-                {/*    <LinkButton href={selectedBrandHref} disabled={!!selectedBrandHref ? false : true}><FormattedMessage id={'text.downloadNow'}/></LinkButton>*/}
-                {/*</StyledWrapDownloadForm>*/}
+                <Grid
+                    container
+                    direction="row"
+                    justify="flex-start"
+                    alignItems="flex-start"
+                >
+                    <Grid item lg={3} md={4} xs={12}>
+                        <Tabs
+                    orientation="vertical"
+                    value={value}
+                    onChange={handleChange}
+                >
+                    {wallets.map((wallet, index) =>
+                        <Tab
+                            key={index}
+                            label={wallet.label}
+                            id={`vertical-tab-${index}`}
+                        />
+                    )}
+                </Tabs>
+                    </Grid>
+                    <Grid item lg={6} md={8} xs={12}>
+                        {wallets.map((wallet, index) =>
+                            <StyledWrapperContent
+                                hidden={value !== index}
+                                id={`vertical-tabpanel-${index}`}
+                                value={value}
+                                index={index}
+                                key={index}
+                            >
+                                <TabContent
+                                    description={wallet.description}
+                                    image={wallet.image}
+                                    pros={wallet.pros}
+                                    cons={wallet.cons}
+                                    label={wallet.label}
+                                />
+                            </StyledWrapperContent>
+                        )}
+                    </Grid>
+                    <Hidden mdDown>
+                    <Grid item lg={3} md={4} xs={12}>
+                        <StyledImgWrap>
+                            <img src={walletImg} alt={intl.formatMessage({id:'title.categoriesOfWallets'})} />
+                        </StyledImgWrap>
+                    </Grid>
+                    </Hidden>
+                </Grid>
             </Container>
         </StyledWrapCategories>
     )
@@ -78,3 +124,4 @@ TabsCategories.propTypes = {
 };
 
 export default injectIntl(TabsCategories);
+

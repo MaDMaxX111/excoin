@@ -52,5 +52,7 @@ export default {
   "table.column24hChange": "24h Change",
   "table.column24hHigh": "24h High",
   "table.column24hLow": "24h Low",
-  "table.column24hVolume": "24h Volume"
+  "table.column24hVolume": "24h Volume",
+  "label.pros": "Pros:",
+  "label.cons": "Cons:"
 };
