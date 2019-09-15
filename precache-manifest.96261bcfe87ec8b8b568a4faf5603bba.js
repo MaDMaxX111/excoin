@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "210ea21f4bf71ed84f90d09e409cb1a9",
+    "revision": "03feacb2cc28246cdbb415ae2d3393fb",
     "url": "/excoin/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/excoin/static/js/2.9f79c1ca.chunk.js"
   },
   {
-    "revision": "e9462b876b1ee52f226f",
-    "url": "/excoin/static/js/main.818a984b.chunk.js"
+    "revision": "c1e8e991d7512cd745b7",
+    "url": "/excoin/static/js/main.de2d1a09.chunk.js"
   },
   {
     "revision": "f69ad550a5cf63cf4bbd",
