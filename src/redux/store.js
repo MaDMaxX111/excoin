@@ -3,6 +3,7 @@ import { createBrowserHistory } from 'history';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
 import reducers from '../redux/reducers';
+import rootSaga from './sagas';
 import createPersistingStore, { loadState } from '../middlewares/persistingstore';
 import persistingConfig from './persistingConfig';
 
@@ -47,5 +48,5 @@ const store = typeof window === 'object' ? createStore(
         }),
         composeEnhancers(applyMiddleware(...middlewares)));
 
-// sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga);
 export { store, history };
