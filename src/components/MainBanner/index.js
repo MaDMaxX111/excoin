@@ -13,13 +13,14 @@ import SubscribeFrorm from './subscribeform';
 import Chart from './chart';
 import News from './news';
 import {connect} from "react-redux";
-import miniTickerActions from '../../redux/miniticker/actions';
+import miniTickerActions from '../../redux/tickers/actions';
 const {subscribeMiniTickers} = miniTickerActions;
 
 const pairs = ['BNB/USDT', 'BTC/USDT', 'ETH/USDT', 'EOS/USDT'];
 const MainBanner = ({subscribeMiniTickers}) => {
     useEffect(() => {
         subscribeMiniTickers({tickers: pairs})
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <StyledWrapMainBanner backgroundImage={background}>

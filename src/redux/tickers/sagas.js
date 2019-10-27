@@ -1,6 +1,9 @@
-import { all, takeEvery, put, call, take, select } from 'redux-saga/effects'
-// import { eventChannel } from 'redux-saga'
-import actions from './actions'
+import { all, takeEvery, put, call, take, select } from 'redux-saga/effects';
+import { eventChannel } from 'redux-saga';
+import actions from './actions';
+import ws from '../../api/binance_ws';
+import wsConfig from '../../api/binance_config';
+
 // import { getTournaments, getEvents } from '../API'
 // import sseChanel from '../API/sse'
 // import {
@@ -32,40 +35,33 @@ import actions from './actions'
 //     BATTLE_STATE_COMPLETED,
 // } from '../const/tournament'
 //
-// let channel = null
+let channel = null
 //
-// function* createEventChannel(sseChanel) {
-//     return yield eventChannel(emit => {
-//
-//         const callBack = (message) => {
-//             emit(message)
-//         }
-//
-//         sseChanel.on(EVENT_BATTLE_UPDATE, callBack)
-//
-//         return () => {
-//             sseChanel.off(EVENT_BATTLE_UPDATE, callBack)
-//         }
-//     })
-// }
-//
-function* subscribeMiniTickers() {
-    debugger;
-//
-//     try {
-//
-//         const {data: results} = yield getTournaments()
-//
-//         yield put(actions.loadTournamentsSuccess({tournaments: results}))
-//
-//         const sse = sseChanel.getChanel()
-//
-//         if (sse) {
-//             while (true) {
-//
-//                 channel = yield call(createEventChannel, sse)
-//
-//                 const { data } = yield take(channel);
+function* createEventChannel(symbols) {
+    return yield eventChannel(emit => {
+
+        const callBack = (message) => {
+            emit(message)
+        }
+
+        ws.subscribe(callBack, symbols, wsConfig.streams.ticker)
+
+        return () => {
+            ws.unsubscribe(callBack)
+        }
+    })
+}
+
+function* subscribeMiniTickers({ tickers }) {
+
+    try {
+        channel = yield call(createEventChannel, tickers)
+
+        while (true) {
+
+                const data = yield take(channel);
+
+                console.log(data);
 //
 //                 const updateBattle = JSON.parse(data) || null
 //                 if (updateBattle) {
@@ -217,15 +213,15 @@ function* subscribeMiniTickers() {
 //                             showTournamentNotificationMessage({typeMessage, object, battle: updateBattle})
 //                         }
 //
-//                     }
+                    }
 //
 //                 }
 //             }
 //         }
 //
-//     } catch (e) {
-//         console.log(e)
-//     }
+    } catch (e) {
+        console.log(e)
+    }
 }
 //
 // function* unSubscribeTournamentSaga() {
@@ -238,7 +234,7 @@ function* subscribeMiniTickers() {
 
 export default function* rootSaga() {
     yield all([
-        takeEvery(actions.subscribeMiniTickers, subscribeMiniTickers),
+        takeEvery(actions.SUBSCRIBE_MINI_TICKERS, subscribeMiniTickers),
         // takeEvery(UNSUBSCRIBE_TOURNAMENTS, unSubscribeTournamentSaga),
     ])
 }

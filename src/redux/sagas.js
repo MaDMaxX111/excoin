@@ -1,5 +1,5 @@
 import {all} from 'redux-saga/effects';
-import minitickerSagas from './miniticker/sagas'
+import minitickerSagas from './tickers/sagas'
 
 export default function* rootSaga(getState) {
     yield all([
