@@ -14,12 +14,19 @@ import Chart from './chart';
 import News from './news';
 import {connect} from "react-redux";
 import miniTickerActions from '../../redux/tickers/actions';
-const {subscribeMiniTickers} = miniTickerActions;
+const {subscribeMiniTickers, unsubscribeMiniTickers} = miniTickerActions;
 
 const pairs = ['BNB/USDT', 'BTC/USDT', 'ETH/USDT', 'EOS/USDT'];
-const MainBanner = ({subscribeMiniTickers}) => {
+const MainBanner = ({
+                        subscribeMiniTickers,
+                        unsubscribeMiniTickers,
+                        tickers,
+                    }) => {
     useEffect(() => {
         subscribeMiniTickers({tickers: pairs})
+        return function cleanup() {
+            unsubscribeMiniTickers({tickers: pairs});
+        };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
@@ -39,7 +46,7 @@ const MainBanner = ({subscribeMiniTickers}) => {
                     <Grid container justify="center" spacing={8}>
                         {pairs.map(value => (
                             <Grid key={value} item lg={3} md={6} xs={12}>
-                                <Chart />
+                                <Chart symbol={value} ticker={value.replace('/', '') in tickers ? tickers[value.replace('/','')] : {}}/>
                             </Grid>
                         ))}
                     </Grid>
@@ -52,15 +59,22 @@ const MainBanner = ({subscribeMiniTickers}) => {
 
 MainBanner.propTypes = {
     subscribeMiniTickers: PropTypes.func,
+    unsubscribeMiniTickers: PropTypes.func,
+    tickers: PropTypes.object,
 };
 
 function mapStateToProps(state) {
-    // const {Language} = state;
-    // const {currentLanguage, avalableLanguages} = Language || {}
-    // return {
-    //     currentLanguage,
-    //     avalableLanguages,
-    // }
+    const { Tickers } = state;
+    const tickers = {};
+    const tickersKey = Object.keys(Tickers).filter(ticker => pairs.findIndex(pair => pair.replace('/', '') === ticker) > -1);
+    tickersKey.forEach(key => {
+        tickers[key] = Object.assign({}, Tickers[key])
+    })
+    return {
+        tickers,
+    }
 }
 
-export default connect(mapStateToProps, {subscribeMiniTickers})(MainBanner);
+export default connect(mapStateToProps, {
+    subscribeMiniTickers, unsubscribeMiniTickers
+})(MainBanner);

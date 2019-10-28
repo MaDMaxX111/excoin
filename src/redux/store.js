@@ -48,5 +48,14 @@ const store = typeof window === 'object' ? createStore(
         }),
         composeEnhancers(applyMiddleware(...middlewares)));
 
-sagaMiddleware.run(rootSaga);
+let sagaTask = sagaMiddleware.run(rootSaga);
+
+module.hot.accept('./sagas', () => {
+    const getNewSagas = require('./sagas');
+    sagaTask.cancel()
+    sagaTask.done.then(() => {
+        sagaTask = sagaMiddleware.run(getNewSagas)
+    })
+})
+
 export { store, history };

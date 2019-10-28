@@ -16,8 +16,13 @@ class BinanceWs {
         console.log(rest)
     }
 
-    handleOnMessage(message) {
-        console.log(message)
+    handleOnMessage = (message) => {
+        const { data: d } = message;
+        const data = JSON.parse(d);
+        const { stream, data: streamData } = data || {}
+        if (stream && this.subscribers[stream] && streamData) {
+            this.subscribers[stream].forEach(subscribe => subscribe.callback(streamData))
+        }
     }
     getWs() {
 
@@ -28,6 +33,9 @@ class BinanceWs {
     }
 
     openWs() {
+        if (this.ws) {
+            this.ws.close();
+        }
         this.ws = new WebSocket(config.stream + this.currentStream);
         this.ws.onclose = this.handleSocketClose;
         this.ws.onerror = this.handleOnError;
@@ -42,29 +50,41 @@ class BinanceWs {
         })
     }
 
-    subscribe(callback, symbols, stream) {
-        if (this.subscribers[stream]) {
-            this.subscribers[stream].push({
-                hashCode: hashCode(callback),
-                callback,
-            })
-        } else {
-            this.subscribers[stream] = [{
-                hashCode: hashCode(callback),
-                callback,
-            }]
-        }
+    subscribe = (callback, symbols, stream) => {
+        const streams = [];
+        symbols.forEach(symbol => {
+            const subStream = symbol.replace('/', '').toLowerCase() + '@' + stream;
+            if (this.subscribers[subStream]) {
+                this.subscribers[subStream].push({
+                    hashCode: hashCode(callback),
+                    callback,
+                })
+            } else {
+                this.subscribers[subStream] = [{
+                    hashCode: hashCode(callback),
+                    callback,
+                }]
+            }
 
-        this.addStream(symbols, stream);
+            streams.push(subStream);
+        })
+
+        this.addStreams(streams);
     }
 
-    addStream(symbols, stream) {
-        let str = '';
-        symbols.forEach(symbol => {
-            str += symbol.replace('/', '') + '@' + stream + '/';
+    addStreams(streams) {
+        let updateWs = '';
+        streams.forEach(stream => {
+            if (!this.currentStream.match(new RegExp(stream, 'g'))) {
+                updateWs += stream + '/';
+            }
         })
-        console.log(this.currentStream);
-        console.log(str);
+
+        if (updateWs) {
+            this.currentStream += updateWs.replace(/\/$/,'');
+            console.log(this.currentStream);
+            this.openWs();
+        }
 
     }
 }
