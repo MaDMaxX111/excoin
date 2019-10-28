@@ -14,7 +14,6 @@ import Chart from './chart';
 import News from './news';
 import {connect} from "react-redux";
 import miniTickerActions from '../../redux/tickers/actions';
-
 const {subscribeMiniTickers, unsubscribeMiniTickers} = miniTickerActions;
 const pairs = ['BNB/USDT', 'BTC/USDT', 'ETH/USDT', 'EOS/USDT'];
 

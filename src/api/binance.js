@@ -1,10 +1,10 @@
 import config from  './binance_config'
 
 const api = async (endpoint, method = 'POST', payload = {}) => {
+    const url = new URL(`${config.proxy}${config.apiUrl}${endpoint}`);
 
-    const url = new URL(`${config.apiUrl}${endpoint}`);
     if (method === 'GET' && Object.keys(payload).length) {
-        url.search = new URLSearchParams(JSON.stringify(payload));
+        url.search = new URLSearchParams(JSON.parse(JSON.stringify(payload)));
     }
 
     let options = {
@@ -19,34 +19,20 @@ const api = async (endpoint, method = 'POST', payload = {}) => {
         options.data= JSON.stringify(payload)
     }
     const responce = await fetch(url.toString(), options);
-    debugger;
-    return fetch(options)
-        .then(async (res) => {
+    const {ok, statusText } = responce;
 
-            const {status} = res
-debugger;
-            // if (status >= 200 && status < 300) {
-            //     const { data } = res;
-            //     return data;
-            // } else {
-            //     throw res.data;
-            // }
-        }, error => {
-            const { response } = error;
-            const { data, status } = response || {};
+    if (ok) {
+        return await responce.json();
+    } else {
+        throw statusText;
+    }
 
-            if (status === 401 || status === 403) {
-                logout()
-            }
-
-            if (status === 500 || status === 400) {
-                throw data || error;
-            }
-
-            throw data || error
-        });
 };
 
 export function getExchangeInfo() {
     return api(config.methods.exchangeInfo.url, config.methods.exchangeInfo.method);
+}
+
+export function getKlines({symbol, interval, startTime, endTime, limit}) {
+    return api(config.methods.klines.url, config.methods.klines.method, {symbol, interval, startTime, endTime, limit});
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { IntlProvider } from "react-intl";
@@ -13,12 +13,23 @@ import Features from "./components/Features";
 import MarketsTable from "./components/MarketsTable";
 import OurWallets from "./components/OurWallets";
 import TabsCategories from "./components/TabsCategories";
+import boot from './redux/boot';
 
 export const MainContainer = ({ currentLanguage }) => {
+
+    const [booting, setBooting] = useState(true)
+    useEffect(() => {
+        async function booting() {
+            await boot();
+            setBooting(false);
+        }
+        booting();
+    }, []);
 
     const currentAppLocale = AppLocale[currentLanguage]
 
     return (
+        !booting ?
         <IntlProvider locale={currentLanguage} messages={currentAppLocale.messages}>
             <AppStyledContainer>
                 <Header/>
@@ -33,7 +44,7 @@ export const MainContainer = ({ currentLanguage }) => {
                 </ContentWrap>
                 <Footer/>
             </AppStyledContainer>
-        </IntlProvider>
+        </IntlProvider> : null
     )
 }
 
@@ -43,7 +54,6 @@ MainContainer.propTypes = {
 
 
 function mapStateToProps(state) {
-
     const { Language } = state;
     const { currentLanguage } = Language || {}
     return {

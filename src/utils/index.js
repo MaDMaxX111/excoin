@@ -6,4 +6,10 @@ export {
 export {
     useDimensions,
     useVisibility,
+    usePrevious,
 } from './hooks'
+
+export {
+    round,
+    formatTicker,
+} from './symbols'

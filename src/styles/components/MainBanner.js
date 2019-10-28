@@ -119,7 +119,10 @@ export const StyledWrapChart = styled.div`
       margin-bottom: ${props => props.theme.spacing(2)}px;
       line-height: 1;
       & .value {
-        color: ${props => props.low ? props.theme.palette.common.red : props.theme.palette.common.green};
+        color: ${props => {
+            if (props.low) return props.theme.palette.common.red;
+            if (props.hi) return props.theme.palette.common.green;
+        }};
         margin-right: ${props => props.theme.spacing(2)}px;     
       }
       & .rate {
