@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import { FormattedMessage, FormattedNumber } from "react-intl";
 import { useTheme } from '@material-ui/styles';
 import { AreaChart, Area } from 'recharts';
-
 import { useDimensions } from '../../utils';
 import {
     StyledWrapChart
 } from '../../styles/components/MainBanner';
+
+import { formatValue } from '../../utils/symbols';
 
 
 const data = [
@@ -21,7 +23,7 @@ const data = [
 
 const Chart = ({ticker, symbol}) => {
     const {p, c, q} = ticker
-    previewVal = ticker;
+    // previewVal = ticker;
         // console.log(ticker)
     // A: "20.54000000"
     // B: "35.20000000"
@@ -80,9 +82,9 @@ const Chart = ({ticker, symbol}) => {
         <StyledWrapChart low={'true'}>
             <div className={'caption'}>
                 <div className={'title'}>{symbol}</div>
-                <div className={'valuerate'}><span className={'value'}>{c}</span><span
-                    className={'rate'}>${c}</span></div>
-                <div className={'volume'}>Volume: {q}</div>
+                <div className={'valuerate'}><span className={'value'}>{formatValue(c, symbol)}</span><span
+                    className={'rate'}><FormattedNumber value={c} /></span></div>
+                <div className={'volume'}>Volume: <FormattedNumber value={q} /></div>
             </div>
             <div className={'chart'} ref={chartRef}>
                 <AreaChart width={chartSize.width}
