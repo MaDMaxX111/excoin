@@ -7,13 +7,13 @@ class BinanceWs {
         this.currentStream = '';
     }
     handleSocketOpen(...rest) {
-        console.log(rest)
+        // console.log(rest)
     }
     handleSocketClose(...rest) {
-        console.log(rest)
+        // console.log(rest)
     }
     handleOnError(...rest) {
-        console.log(rest)
+        // console.log(rest)
     }
 
     handleOnMessage = (message) => {
@@ -82,7 +82,7 @@ class BinanceWs {
 
         if (updateWs) {
             this.currentStream += updateWs.replace(/\/$/,'');
-            console.log(this.currentStream);
+            // console.log(this.currentStream);
             this.openWs();
         }
 

@@ -6,5 +6,6 @@ export const formatTicker = (ticker, symbolInfo) => {
 }
 
 export const round = (value, pad = 0) => {
-    return Math.round(parseFloat(value) * Math.pow(10, pad)) / Math.pow(10, pad);
+    const number = Math.round(parseFloat(value) * Math.pow(10, pad)) / Math.pow(10, pad);
+    return number.toFixed(pad);
 }

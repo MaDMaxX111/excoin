@@ -64,12 +64,15 @@ MainBanner.propTypes = {
 };
 
 function mapStateToProps(state) {
-    const { Tickers } = state;
+
+    const { Tickers, ExchangeInfo } = state;
+    const { symbols } = ExchangeInfo || {};
     const tickers = {};
     const tickersKey = Object.keys(Tickers).filter(ticker => pairs.findIndex(pair => pair.replace('/', '') === ticker) > -1);
     tickersKey.forEach(key => {
-        tickers[key] = Object.assign({}, Tickers[key])
+        tickers[key] = Object.assign({}, Tickers[key], {symbolInfo: symbols[key] || {}})
     })
+
     return {
         tickers,
     }

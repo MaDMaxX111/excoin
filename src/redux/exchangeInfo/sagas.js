@@ -1,4 +1,4 @@
-import { all, takeEvery, put, call, take } from 'redux-saga/effects';
+import { all, takeEvery } from 'redux-saga/effects';
 import actions from './actions';
 import { getExchangeInfo } from '../../api/binance';
 import { store } from '../store';

@@ -40,6 +40,7 @@ export default {
   "text.selectDownload": "Select one & Download",
   "text.downloadNow": "Download now",
   "text.descriptionCategory": " If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.",
+  "text.volume": "Volume",
   "banner.buyAndSellCryptocurrency": "Buy and Sell Cryptocurrency",
   "banner.text": "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text",
   "banner.gettingStarted": "Getting started",
@@ -54,5 +55,5 @@ export default {
   "table.column24hLow": "24h Low",
   "table.column24hVolume": "24h Volume",
   "label.pros": "Pros:",
-  "label.cons": "Cons:"
+  "label.cons": "Cons:",
 };
