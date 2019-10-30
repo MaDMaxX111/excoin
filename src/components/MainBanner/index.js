@@ -4,6 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Typography from "@material-ui/core/Typography";
 import { FormattedMessage } from "react-intl";
+import {connect} from "react-redux";
+import _ from 'lodash';
 import {
     StyledWrapMainBanner,
     StyledWrapCharts,
@@ -12,7 +14,6 @@ import background from '../../images/waves.svg';
 import SubscribeFrorm from './subscribeform';
 import Chart from './chart';
 import News from './news';
-import {connect} from "react-redux";
 import miniTickerActions from '../../redux/tickers/actions';
 const {subscribeMiniTickers, unsubscribeMiniTickers} = miniTickerActions;
 const pairs = ['BNB/USDT', 'BTC/USDT', 'ETH/USDT', 'EOS/USDT'];
@@ -80,4 +81,6 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
     subscribeMiniTickers, unsubscribeMiniTickers
-})(MainBanner);
+})(React.memo(MainBanner, (prevProps, nextProps) => {
+    return _.isEqualWith(prevProps, nextProps, 'tickers');
+}));

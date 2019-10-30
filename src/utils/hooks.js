@@ -2,11 +2,14 @@ import { useState, useRef, useLayoutEffect, useEffect } from 'react';
 
 function useDimensions() {
     const ref = useRef();
+    const { current } = ref;
+
+    const { width, height } = current ? current.getBoundingClientRect() : {};
     const [dimensions, setDimensions] = useState({});
 
     useLayoutEffect(() => {
         setDimensions(ref.current.getBoundingClientRect().toJSON())
-    }, [ref]);
+    },[ref, width, height]);
 
     return [ref, dimensions];
 }
@@ -36,7 +39,8 @@ function useVisibility(node, options = {}) {
         return function cleanup() {
             observer.unobserve(current);
         };
-    });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]);
 
     return visible;
 }

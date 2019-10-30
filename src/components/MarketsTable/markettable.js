@@ -117,7 +117,7 @@ const rows = [
     },
 ];
 
-const MarketTable = ({market}) => {
+const MarketTable = ({tickers}) => {
     return (
         <StyledWrapTableContainer>
             <StyledWrapTable>
@@ -133,14 +133,14 @@ const MarketTable = ({market}) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row, index) => (
+                    {tickers.map((ticker, index) => (
                         <TableRow key={index}>
                             <TableCell className={'favorite'}>
-                                <FontAwesomeIcon icon={row.inFavorite ? faStar : faStarOpen}
-                                                 className={row.inFavorite ? 'orange' : ''}/>
+                                <FontAwesomeIcon icon={ticker.inFavorite ? faStar : faStarOpen}
+                                                 className={ticker.inFavorite ? 'orange' : ''}/>
                             </TableCell>
-                            <TableCell className={'pair'}>{row.pair}</TableCell>
-                            <TableCell className={'lastPrice'}><span className={row.direction}>{row.lastPrice[0]}</span><span> / {row.lastPrice[1]}</span></TableCell>
+                            <TableCell className={'pair'}>{ticker.pair}</TableCell>
+                            <TableCell className={'lastPrice'}><span className={ticker.direction}>{ticker.lastPrice[0]}</span><span> / {ticker.lastPrice[1]}</span></TableCell>
                             <TableCell className={'_24hChange'}><span
                                 className={row.direction}>{row['24hChange']}</span></TableCell>
                             <TableCell className={'_24hHigh'}>{row['24hHigh']}</TableCell>
@@ -155,7 +155,8 @@ const MarketTable = ({market}) => {
 }
 
 MarketTable.propTypes = {
-    market: PropTypes.string,
+    // market: PropTypes.string,
+    tickers: PropTypes.object,
 };
 
 export default MarketTable;

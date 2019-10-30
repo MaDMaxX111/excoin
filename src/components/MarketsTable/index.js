@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 import Container from '@material-ui/core/Container';
 import { FormattedMessage, injectIntl } from "react-intl";
 import Tab from '@material-ui/core/Tab';
@@ -7,6 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from '@fortawesome/free-regular-svg-icons';
+import nanoid from "nanoid";
 
 import {
     StyledWrapMarketsTable,
@@ -14,32 +16,59 @@ import {
 } from '../../styles/components/MarketsTable';
 
 import MarketTable from './markettable';
-import nanoid from "nanoid";
+import miniTickerActions from '../../redux/tickers/actions';
+import _ from "lodash";
 
-const tabs = [
+const {subscribeMiniTickers, unsubscribeMiniTickers} = miniTickerActions;
+
+const initTabs = [
     {
         label: <><FontAwesomeIcon icon={faStar} /><span>{'Favorites'}</span></>,
         market: 'favorite'
     },
     {
         label: 'BNB Markets',
-        market: 'bnb',
+        market: 'BNB',
     },
     {
         label: 'BTC Markets',
-        market: 'btc',
+        market: 'BTC',
     },
     {
         label: 'ETH Markets',
-        market: 'eth',
+        market: 'ETH',
     },
     {
         label: 'USDT Markets',
-        market: 'usdt',
+        market: 'USDT',
     },
 ]
 
-const MarketsTable = ({intl}) => {
+const MarketsTable = ({
+                          intl,
+                          tabs,
+                          symbols,
+                          subscribeMiniTickers,
+                          unsubscribeMiniTickers,
+                          tickers,
+}) => {
+
+    useEffect(() => {
+        let pairs = [];
+        const markets = tabs.map(market => market.market);
+        if (markets.length) {
+            pairs = Object.values(symbols).filter(symbol => {
+                const { quoteAsset } = symbol;
+                return markets.indexOf(quoteAsset) > -1;
+            })
+        }
+
+        pairs.length && subscribeMiniTickers({tickers: pairs.map(pair => pair.symbol)})
+        return function cleanup() {
+            unsubscribeMiniTickers({tickers: pairs});
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [symbols])
 
     const [market, setMarket] = useState(tabs[0].market);
 
@@ -48,7 +77,7 @@ const MarketsTable = ({intl}) => {
     }
 
     const idInputSearch = nanoid();
-    const t = tabs.concat([    {
+    const t = tabs.concat([{
         market: 'search',
         label:
             <>
@@ -63,7 +92,7 @@ const MarketsTable = ({intl}) => {
                 <FontAwesomeIcon icon={faSearch} />
             </>,
     }])
-
+    const conditionTickers = new RegExp(market + '$', 'i');
     return (
         <StyledWrapMarketsTable>
             <Container>
@@ -77,13 +106,45 @@ const MarketsTable = ({intl}) => {
                 >
                     {t.map((tab, index) => <Tab label={tab.label} key={index} value={tab.market} />)}
                 </StyledTabs>
-                <MarketTable market={market} />
+                <MarketTable market={market} tickers={
+                    Object.keys(tickers)
+                        .filter(key => key.match(conditionTickers))
+                        .reduce((obj, key) => {
+                            obj[key] = tickers[key];
+                            return obj;
+                        }, {})
+                }/>
             </Container>
         </StyledWrapMarketsTable>
     )
 }
 
+MarketsTable.defaultProps = {
+    tabs: initTabs,
+}
+
 MarketsTable.propTypes = {
     intl: PropTypes.object,
+    symbols: PropTypes.object,
+    tabs: PropTypes.array,
+    subscribeMiniTickers: PropTypes.func,
+    unsubscribeMiniTickers: PropTypes.func,
+    tickers: PropTypes.object,
 };
-export default injectIntl(MarketsTable);
+
+function mapStateToProps(state) {
+
+    const { Tickers, ExchangeInfo } = state;
+    const { symbols } = ExchangeInfo || {};
+
+    return {
+        symbols,
+        tickers:Tickers,
+    }
+}
+
+export default injectIntl(connect(mapStateToProps, {
+    subscribeMiniTickers, unsubscribeMiniTickers
+})(React.memo(MarketsTable, (prevProps, nextProps) => {
+    return _.isEqual(prevProps, nextProps);
+})));
