@@ -4,7 +4,7 @@ import actions from './actions';
 import ws from '../../api/binance_ws';
 import wsConfig from '../../api/binance_config';
 import { formatTicker } from "../../utils";
-
+import { BASE_CURRENCY_CODE } from '../../constants/common';
 let channel = null;
 
 function* createEventChannel(symbols) {
@@ -31,6 +31,14 @@ function* subscribeMiniTickers({ tickers }) {
             const data = yield take(channel);
             if (data) {
                 const { s: symbol } = data;
+                const { quoteAsset } = symbolInfo[symbol] || {};
+                const tickerToBaseCurrency = yield select(state => state.Tickers[quoteAsset + BASE_CURRENCY_CODE]);
+                if (tickerToBaseCurrency) {
+                    const { c: quoteAssetToBaseCurrency } = tickerToBaseCurrency;
+                    data.quoteAssetToBaseCurrency = quoteAssetToBaseCurrency;
+                } else {
+                    data.quoteAssetToBaseCurrency = null;
+                }
                 yield put(actions.updateTicket({symbol, ticker: formatTicker(data, symbolInfo[symbol])}));
             }
                     }

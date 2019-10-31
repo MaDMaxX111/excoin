@@ -93,6 +93,12 @@ const MarketsTable = ({
             </>,
     }])
     const conditionTickers = new RegExp(market + '$', 'i');
+    const filteredTickers = Object.keys(tickers).filter(key => key.match(conditionTickers))
+        .reduce((obj, key) => {
+            obj[key] = tickers[key];
+            return obj;
+        }, {})
+
     return (
         <StyledWrapMarketsTable>
             <Container>
@@ -106,14 +112,7 @@ const MarketsTable = ({
                 >
                     {t.map((tab, index) => <Tab label={tab.label} key={index} value={tab.market} />)}
                 </StyledTabs>
-                <MarketTable market={market} tickers={
-                    Object.keys(tickers)
-                        .filter(key => key.match(conditionTickers))
-                        .reduce((obj, key) => {
-                            obj[key] = tickers[key];
-                            return obj;
-                        }, {})
-                }/>
+                <MarketTable market={market} tickers={filteredTickers} />
             </Container>
         </StyledWrapMarketsTable>
     )
@@ -143,8 +142,14 @@ function mapStateToProps(state) {
     }
 }
 
-export default injectIntl(connect(mapStateToProps, {
+export default injectIntl(connect(_.throttle(mapStateToProps, 3000, { 'trailing': false }), {
     subscribeMiniTickers, unsubscribeMiniTickers
 })(React.memo(MarketsTable, (prevProps, nextProps) => {
     return _.isEqual(prevProps, nextProps);
 })));
+
+// export default injectIntl(connect(mapStateToProps, {
+//     subscribeMiniTickers, unsubscribeMiniTickers
+// })(React.memo(MarketsTable, (prevProps, nextProps) => {
+//     return _.isEqual(prevProps, nextProps);
+// })));

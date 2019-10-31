@@ -4,15 +4,13 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import {FormattedMessage} from "react-intl";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faStar as faStarOpen} from '@fortawesome/free-regular-svg-icons';
-import {faStar} from "@fortawesome/free-solid-svg-icons";
-
-import {
-    StyledWrapTable,
-    StyledWrapTableContainer,
-} from '../../styles/components/MarketsTable';
+import { FormattedMessage } from "react-intl";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar as faStarOpen } from '@fortawesome/free-regular-svg-icons';
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { round } from '../../utils';
+import { StyledWrapTable, StyledWrapTableContainer, } from '../../styles/components/MarketsTable';
+import { BASE_CURRENCY_SYMBOL } from '../../constants/common';
 
 const rows = [
     {
@@ -118,6 +116,7 @@ const rows = [
 ];
 
 const MarketTable = ({tickers}) => {
+    // console.log(tickers)
     return (
         <StyledWrapTableContainer>
             <StyledWrapTable>
@@ -133,21 +132,35 @@ const MarketTable = ({tickers}) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {tickers.map((ticker, index) => (
-                        <TableRow key={index}>
-                            <TableCell className={'favorite'}>
-                                <FontAwesomeIcon icon={ticker.inFavorite ? faStar : faStarOpen}
-                                                 className={ticker.inFavorite ? 'orange' : ''}/>
-                            </TableCell>
-                            <TableCell className={'pair'}>{ticker.pair}</TableCell>
-                            <TableCell className={'lastPrice'}><span className={ticker.direction}>{ticker.lastPrice[0]}</span><span> / {ticker.lastPrice[1]}</span></TableCell>
-                            <TableCell className={'_24hChange'}><span
-                                className={row.direction}>{row['24hChange']}</span></TableCell>
-                            <TableCell className={'_24hHigh'}>{row['24hHigh']}</TableCell>
-                            <TableCell className={'_24hLow'}>{row['24hLow']}</TableCell>
-                            <TableCell className={'_24hVolume'}>{row['24hVolume']}</TableCell>
-                        </TableRow>
-                    ))}
+                    {Object.keys(tickers).map((symbol, index) => {
+
+                        if (symbol === 'LTCBNB') {
+                            console.log(tickers[symbol]);
+                        }
+                        const { P, c: lastPrice, q, symbolInfo, quoteAssetToBaseCurrency } = tickers[symbol] || {};
+                        const ticker = {
+                            inFavorite: false,
+                        }
+                        return (
+                            <TableRow key={index}>
+                                <TableCell className={'favorite'}>
+                                    <FontAwesomeIcon
+                                        icon={ticker.inFavorite ? faStar : faStarOpen}
+                                        className={ticker.inFavorite ? 'orange' : ''}
+                                    />
+                                </TableCell>
+                                <TableCell className={'pair'}>{symbol}</TableCell>
+                                <TableCell className={'lastPrice'}>
+                                    <span className={ticker.direction}>{lastPrice}</span><span> / {BASE_CURRENCY_SYMBOL}{round(quoteAssetToBaseCurrency * lastPrice, 2)}</span>
+                                </TableCell>
+                                <TableCell className={'_24hChange'}><span
+                                    className={ticker.direction}>{ticker['24hChange']}</span></TableCell>
+                                <TableCell className={'_24hHigh'}>{ticker['24hHigh']}</TableCell>
+                                <TableCell className={'_24hLow'}>{ticker['24hLow']}</TableCell>
+                                <TableCell className={'_24hVolume'}>{ticker['24hVolume']}</TableCell>
+                            </TableRow>
+                        )
+                    })}
                 </TableBody>
             </StyledWrapTable>
         </StyledWrapTableContainer>

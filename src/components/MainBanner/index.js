@@ -15,6 +15,7 @@ import SubscribeFrorm from './subscribeform';
 import Chart from './chart';
 import News from './news';
 import miniTickerActions from '../../redux/tickers/actions';
+import { THROTTLE_UPDATE_TIME } from '../../constants/common';
 const {subscribeMiniTickers, unsubscribeMiniTickers} = miniTickerActions;
 const pairs = ['BNB/USDT', 'BTC/USDT', 'ETH/USDT', 'EOS/USDT'];
 
@@ -79,7 +80,7 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {
+export default connect(_.throttle(mapStateToProps, THROTTLE_UPDATE_TIME), {
     subscribeMiniTickers, unsubscribeMiniTickers
 })(React.memo(MainBanner, (prevProps, nextProps) => {
     return _.isEqualWith(prevProps, nextProps, 'tickers');
