@@ -32,12 +32,12 @@ function* subscribeMiniTickers({ tickers }) {
             if (data) {
                 const { s: symbol } = data;
                 const { quoteAsset } = symbolInfo[symbol] || {};
-                const tickerToBaseCurrency = yield select(state => state.Tickers[quoteAsset + BASE_CURRENCY_CODE]);
+                const tickerToBaseCurrency = quoteAsset !== BASE_CURRENCY_CODE ? yield select(state => state.Tickers[quoteAsset + BASE_CURRENCY_CODE]) : data;
                 if (tickerToBaseCurrency) {
                     const { c: quoteAssetToBaseCurrency } = tickerToBaseCurrency;
                     data.quoteAssetToBaseCurrency = quoteAssetToBaseCurrency;
                 } else {
-                    data.quoteAssetToBaseCurrency = null;
+                    data.quoteAssetToBaseCurrency = 'null';
                 }
                 yield put(actions.updateTicket({symbol, ticker: formatTicker(data, symbolInfo[symbol])}));
             }

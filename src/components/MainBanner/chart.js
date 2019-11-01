@@ -5,16 +5,14 @@ import { useTheme } from '@material-ui/styles';
 import { Area, AreaChart } from 'recharts';
 import moment from 'moment';
 import _ from 'lodash';
-import { round, useDimensions, usePrevious } from '../../utils';
+import { useDimensions, usePrevious } from '../../utils';
 import { StyledWrapChart } from '../../styles/components/MainBanner';
 import { getKlines } from '../../api/binance';
 import { BASE_CURRENCY_SYMBOL } from '../../constants/common';
 
 const Chart = ({ticker, symbol}) => {
 
-    // const { P, c, q, symbolInfo } = ticker || {};
-    const { P, c, q } = ticker || {};
-    // const { quoteAsset } = symbolInfo || {};
+    const { P, c, q, quoteAssetToBaseCurrency } = ticker || {};
     const prevValue = usePrevious(c);
     const [direction, setDirection] = useState(null);
     const [klines, setklines] = useState([]);
@@ -64,8 +62,8 @@ const Chart = ({ticker, symbol}) => {
         <StyledWrapChart {...StyledWrapChartProps} >
             <div className={'caption'}>
                 <div className={'title'}>{symbol || `--`}</div>
-                <div className={'valuerate'}><span className={'value'}>{c ? c : `--`}</span><span
-                    className={'rate'}>{`${BASE_CURRENCY_SYMBOL}${c}`}</span></div>
+                <div className={'valuerate'}><span className={'value'}>{c ? c : ` --`}</span><span
+                    className={'rate'}>{`${BASE_CURRENCY_SYMBOL}${quoteAssetToBaseCurrency ? quoteAssetToBaseCurrency : ` --`}`}</span></div>
                 <div className={'volume'}><FormattedMessage id={'text.volume'}/>: {q ? <><FormattedNumber value={q}/> {''}</> : '--'}</div>
             </div>
             <div className={'chart'} ref={chartRef}>
