@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/excoin/static/js/main.e2405262.chunk.js",
-    "main.js.map": "/excoin/static/js/main.e2405262.chunk.js.map",
+    "main.js": "/excoin/static/js/main.69a894e5.chunk.js",
+    "main.js.map": "/excoin/static/js/main.69a894e5.chunk.js.map",
     "runtime~main.js": "/excoin/static/js/runtime~main.7dd9842e.js",
     "runtime~main.js.map": "/excoin/static/js/runtime~main.7dd9842e.js.map",
-    "static/js/2.8f3e33ca.chunk.js": "/excoin/static/js/2.8f3e33ca.chunk.js",
-    "static/js/2.8f3e33ca.chunk.js.map": "/excoin/static/js/2.8f3e33ca.chunk.js.map",
+    "static/js/2.fa19c42d.chunk.js": "/excoin/static/js/2.fa19c42d.chunk.js",
+    "static/js/2.fa19c42d.chunk.js.map": "/excoin/static/js/2.fa19c42d.chunk.js.map",
     "index.html": "/excoin/index.html",
-    "precache-manifest.f3debc651d9be00704abec5e19879d63.js": "/excoin/precache-manifest.f3debc651d9be00704abec5e19879d63.js",
+    "precache-manifest.e08a1251b7db75eeffdd0a1b0d9e040b.js": "/excoin/precache-manifest.e08a1251b7db75eeffdd0a1b0d9e040b.js",
     "service-worker.js": "/excoin/service-worker.js",
     "static/media/support.svg": "/excoin/static/media/support.59ff7ce2.svg",
     "static/media/wallet.png": "/excoin/static/media/wallet.8af583c1.png",
