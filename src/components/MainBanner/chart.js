@@ -8,11 +8,13 @@ import _ from 'lodash';
 import { round, useDimensions, usePrevious } from '../../utils';
 import { StyledWrapChart } from '../../styles/components/MainBanner';
 import { getKlines } from '../../api/binance';
+import { BASE_CURRENCY_SYMBOL } from '../../constants/common';
 
 const Chart = ({ticker, symbol}) => {
 
-    const { P, c, q, symbolInfo } = ticker || {};
-    const { quoteAsset } = symbolInfo || {};
+    // const { P, c, q, symbolInfo } = ticker || {};
+    const { P, c, q } = ticker || {};
+    // const { quoteAsset } = symbolInfo || {};
     const prevValue = usePrevious(c);
     const [direction, setDirection] = useState(null);
     const [klines, setklines] = useState([]);
@@ -63,8 +65,8 @@ const Chart = ({ticker, symbol}) => {
             <div className={'caption'}>
                 <div className={'title'}>{symbol || `--`}</div>
                 <div className={'valuerate'}><span className={'value'}>{c ? c : `--`}</span><span
-                    className={'rate'}>${round(c, 2)}</span></div>
-                <div className={'volume'}><FormattedMessage id={'text.volume'}/>: {q ? <><FormattedNumber value={round(q, 2)}/> {quoteAsset}</> : '--'}</div>
+                    className={'rate'}>{`${BASE_CURRENCY_SYMBOL}${c}`}</span></div>
+                <div className={'volume'}><FormattedMessage id={'text.volume'}/>: {q ? <><FormattedNumber value={q}/> {''}</> : '--'}</div>
             </div>
             <div className={'chart'} ref={chartRef}>
                 <AreaChart width={chartSize.width}
@@ -82,7 +84,7 @@ const Chart = ({ticker, symbol}) => {
                         fontSize={10}
                         textAnchor="middle"
                     >
-                        {`${P ? round(P, 2) : '--'}%`}
+                        {`${P ? P : '--'}%`}
                     </text>
                 </AreaChart>
             </div>
